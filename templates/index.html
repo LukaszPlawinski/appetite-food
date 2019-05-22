@@ -1,4 +1,19 @@
-{% extends 'layout.html' %}
-  {% block content %}
-      <h1>Home page</h1>
-    {% endblock %}
+{% extends 'layout.html' %} 
+{% block img %}
+<header class="masthead" style="background-image: url('../static/img/carrot.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Cook with Us</h1>
+          <span class="subheading">Recipes created with passion and love</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %} 
+{% block content %}
+<h1>Home page</h1>
+{% endblock %}
