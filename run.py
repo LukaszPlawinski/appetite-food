@@ -1,14 +1,13 @@
 import os
 import json
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
 @app.route("/")
-@app.route("/home")
 def index():
-    data = []
-     with open("data/recipes.json","r") as json_data:
+     data = []
+     with open("Data/recipes.json","r") as json_data:
         data =json.load(json_data)
      return render_template("index.html",recipes = data)
     
