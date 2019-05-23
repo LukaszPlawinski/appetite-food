@@ -404,5 +404,235 @@
             }
         ],
         "forked": "[Gambas al Ajillo ](http://www.foodandwine.com/recipes/gambas-al-ajillo),\n[Sizzling Shrimp with Garlic (Gambas al Pil Pil)](https://www.williams-sonoma.com/recipe/sizzling-shrimp-with-garlic-gambas-al-pil-pil.html)"
-    }
+    },
+    {
+			"name": "Shakshuka",
+			"id": "shakshuka",
+			"description": "Breakfast of champions (one of them)",
+			"tag": [
+				"Arabic",
+				"Israeli",
+				"Breakfast"
+			],
+			"ingredient": [
+				{
+					"amount": "3",
+					"unit": "tbsp",
+					"name": "Olive oil"
+				},
+				{
+					"amount": "2",
+					"unit": "medium",
+					"name": "Yellow onions",
+					"preparation": "chopped"
+				},
+				{
+					"amount": "1.5",
+					"unit": "lb",
+					"name": "Miced lamb or beef"
+				},
+				{
+					"amount": "1",
+					"unit": "large",
+					"name": "Organic green bell pepper",
+					"preparation": "chopped"
+				},
+				{
+					"amount": "1",
+					"name": "Jalapeño chilli",
+					"preparation": "deseeded & chopped"
+				},
+				{
+					"amount": "1",
+					"unit": "head",
+					"name": "Garlic",
+					"preparation": "minced"
+				},
+				{
+					"amount": "1",
+					"unit": "7 oz jar",
+					"name": "Tomato concentrate"
+				},
+				{
+					"amount": "1",
+					"unit": "28 oz tin",
+					"name": "Chopped peeled tomatoes"
+				},
+				{
+					"amount": "1",
+					"unit": "cup",
+					"name": "Red wine"
+				},
+				{
+					"amount": "4",
+					"name": "Bay leaves"
+				},
+				{
+					"amount": "2",
+					"unit": "tbsp",
+					"name": "Erythritol"
+				},
+				{
+					"amount": "1",
+					"unit": "tbsp",
+					"name": "Beef stock concentrate"
+				},
+				{
+					"amount": "1",
+					"unit": "tbsp",
+					"name": "Smoked Paprika"
+				},
+				{
+					"amount": "1",
+					"unit": "tbsp",
+					"name": "Cumin seed",
+					"preparation": "ground"
+				},
+				{
+					"amount": "1.5",
+					"unit": "tsp",
+					"name": "Black pepper",
+					"preparation": "ground"
+				},
+				{
+					"amount": "1",
+					"unit": "tsp",
+					"name": "Caraway seed",
+					"preparation": "ground"
+				},
+				{
+					"amount": "0.5",
+					"unit": "bunch",
+					"name": "Swiss chard or kale",
+					"preparation": "destemmed"
+				},
+				{
+					"amount": "8",
+					"name": "Freerange eggs"
+				}
+			],
+			"step": [
+				{
+					"description": "Heat oil in a large, deep, preferably ceramic, frying pan on medium heat"
+				},
+				{
+					"description": "Cook onions until translucent, 5-10 min"
+				},
+				{
+					"description": "Add minced meat, stir until lightly browned"
+				},
+				{
+					"description": "Reduce heat a little, add jalapeño and bell pepper, cook until slightly soft. 3-4 min, do not overcook"
+				},
+				{
+					"description": "Add garlic and tomato concentrate, stir for 2 min until tomato tastes cooked not raw"
+				},
+				{
+					"description": "Add the wine. Tip: pour the wine into the tomato paste jar and shake it to get the last of the paste out."
+				},
+				{
+					"description": "Add canned tomatoes, cumin, caraway seeds, bay leaves, paprika, erythritol, concentrated stock, and pepper. Yes, that is a lot of cumin; it will be fine. Bring to low boil, reduce heat, simmer for 20 min"
+				},
+				{
+					"description": "Place de-stemmed Swiss chard leaves on top of cooked tomato mixture. Make 8 small depressions with a spoon"
+				},
+				{
+					"description": "Crack one egg into each depression. Cover (a transparent lid is ideal)"
+				},
+				{
+					"description": "Cook until egg white is _just_ set. Serve immediately, in the pan."
+				}
+			],
+			"notes": "- The tomato sauce keeps for a couple of days in the fridge. If eating over two days, crack only 4 eggs. Next time, reheat sauce then make 4 more depressions and crack the other 4.\n- We use Sukrin Gold erythritol, which looks and tastes like light brown sugar. If not low-carbing, demarara or other sugar can be substituted.\n- Bell peppers are bad for absorbing pesticides, so we always use organic because the skin is eaten.\n- The type of red wine is not critical, honestly. We use small (187ml) “individual” bottles of fairly cheap red wine.",
+			"forked": "[Israeli Breakfast Of Champions: Shakshuka](http://www.foodrepublic.com/recipes/israeli-breakfast-of-champions-shakshuka/)",
+			"image": "http://forkgasm.com/images/shakshuka.jpg"
+		},
+		{
+			"name": "Real Caesar Salad",
+			"id": "real-caesar-salad",
+			"description": "Based on the original 1920's Italian-American table-side recipe",
+			"tag": [
+				"Italian-American",
+				"Salad"
+			],
+			"image": "https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+			"ingredient": [
+				{
+					"amount": "0.5",
+					"unit": "Head",
+					"name": "Garlic",
+					"preparation": "Minced"
+				},
+				{
+					"amount": "5",
+					"name": "Anchovies"
+				},
+				{
+					"amount": "3",
+					"name": "Free-range egg yolks"
+				},
+				{
+					"amount": "1",
+					"unit": "tsp",
+					"name": "Dijon Mustard"
+				},
+				{
+					"amount": "1",
+					"unit": "good splash",
+					"name": "Worcestershire sauce"
+				},
+				{
+					"amount": "1",
+					"unit": "cup",
+					"name": "Extra-virgin Greek olive oil"
+				},
+				{
+					"amount": "0.5",
+					"unit": "cup",
+					"name": "Parmesan",
+					"preparation": "Finely grated"
+				},
+				{
+					"name": "Black pepper",
+					"preparation": "Freshly grated"
+				},
+				{
+					"name": "Sea salt"
+				},
+				{
+					"amount": "2",
+					"unit": "tbsp",
+					"name": "Lemon juice"
+				},
+				{
+					"amount": "3",
+					"name": "Romaine hearts"
+				}
+			],
+			"step": [
+				{
+					"description": "Traditionally using a mortar and pestle (but a hand blender works just as well, we find) turn the garlic, anchovies and a pinch of salt into a fine paste."
+				},
+				{
+					"description": "Add the whisked egg yolks, lemon juice, Worcestershire sauce and mustard. This can be done in a bowl with a whisk, or if using a blender continue with that."
+				},
+				{
+					"description": "Gradually at first, add the oil and whisk/blend with each addition."
+				},
+				{
+					"description": "Add the Parmesan and mix well."
+				},
+				{
+					"description": "Taste, adjust with salt, pepper, lemon as desired."
+				},
+				{
+					"description": "Either shred the romaine hearts and toss with the sauce, or serve individual leaves for dipping."
+				},
+				{
+					"description": "If liked, garnish with more whole anchovies and/or Parmesan flakes"
+				}
+			],
+			"forked": "[Classic Caesar Salad](https://www.bonappetit.com/recipe/classic-caesar-salad#recipe-ingredients)",
+			"notes": "We don't use croutons but if you want them, go ahead!\nSauce keeps well in a fridge for a few days.\n"
+		}
 ]
