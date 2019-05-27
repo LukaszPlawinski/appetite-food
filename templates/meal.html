@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block img %}
+<header class="masthead" style="background-image: url('../static/img/bread.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+ <h1>Cook with Us</h1>
+          <span class="subheading">Recipes created with passion and love</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %}
+{% block content %}
+<h2>{{meal.name}}</h2>
+<hr>
+<div class="row">
+    <div class=" col-md-5">
+        <img style="width:100%" src="{{ meal.image}}" alt="Image for {{meal.name}}">
+    </div>
+   
+    <div class=" col-md-5 offset-md-1">
+        <h5 >Ingredients:</h5>
+        <ul>
+            {% for ingredient in meal.ingredient %}
+            <li>{{ingredient.name}}-{{ingredient.amount}} {{ingredient.unit}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="col-md-10">
+        <br>
+        <h4>Preparation directions</h3>
+            <ol>
+                    {% for step in meal.step %}
+                    <li>{{step.description}}</li>
+                    {% endfor %}
+                </ol>
+    </div>
+    
+</div>
+{% endblock %}
