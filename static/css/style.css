@@ -6,6 +6,26 @@
 .card{
     border: none;
 }
+
+.animated a .btn{
+  position: absolute;
+  font-size: 34px;
+  color: #fff;
+  top: 40%;
+  left: 44%;
+  transform:scale(0);
+}
+
+.animated:hover img{
+	opacity: 0.4;
+}
+.animated * {
+	transition: all 500ms ease-in-out;
+}
+
+.animated:hover a .btn{
+	transform: scale(1.5);
+}
 @media only screen and (min-width: 768px){
   .card-img-top{
        height:25vh;
