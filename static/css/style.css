@@ -11,8 +11,11 @@
   position: absolute;
   font-size: 18px;
   color: #fff;
-  top: 20%;
-  left: 30%;
+  top:30%;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
   transform:scale(0);
 }
 .button a{
@@ -37,5 +40,8 @@
 @media only screen and (min-width: 768px){
   .card-img-top{
        height:25vh;
+  }
+  .button{
+  	top:20%;
   }
 }
