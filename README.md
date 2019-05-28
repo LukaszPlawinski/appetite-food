@@ -1,50 +1,34 @@
-<<<<<<< HEAD
+# Appetite Food
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+I Created this web application that allows users to store and easily access cooking recipes.
+ 
+## UX
+ 
+I designed this website for people who are looking for simple ,quick and healthy recipes
+
+Project design created in Balsamiq mockups 3 is located in main folder :
+[Wireframe](https://github.com/LukaszPlawinski/appetite-food/blob/master/Appetite-food%20wireframe.pdf)
+## Features
+
+In progress
+ 
+### Existing Features
+In progress
+
+### Features Left to Implement
+In progress
+
+## Technologies Used
+
+In progress
 
 
-Welcome to your Python project on Cloud9 IDE!
+## Testing
 
-To show what Cloud9 can do, we added a basic sample web application to this
-workspace, from the excellent Python tutorial _Learning Python the Hard Way_.
-We skipped ahead straight to example 50 which teaches how to build a web
-application.
+In progress
 
-If you've never looked at the tutorial or are interested in learning Python,
-go check it out. It's a great hands-on way for learning all about programming
-in Python.
+## Deployment
 
-* _Learning Python The Hard Way_, online version and videos: 
-http://learnpythonthehardway.org/book/
+In progress
 
-* Full book: http://learnpythonthehardway.org
 
-## Starting from the Terminal
-
-To try the example application, type the following in the terminal:
-
-```
-cd ex50
-python bin/app.py
-```
-
-Alternatively, open the file in ex50/bin and click the green Run
-button!
-
-## Configuration
-
-You can configure your Python version and `PYTHONPATH` used in
-Cloud9 > Preferences > Project Settings > Language Support.
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE.
-To watch some training videos, visit http://www.youtube.com/user/c9ide.
-=======
-# appetite-food
->>>>>>> a7c9daad09d311f740246b3e2ebdff34e723ec71

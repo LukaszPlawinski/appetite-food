@@ -7,7 +7,7 @@
     border: none;
 }
 
-.animated a .btn{
+.button{
   position: absolute;
   font-size: 34px;
   color: #fff;
@@ -16,16 +16,16 @@
   transform:scale(0);
 }
 
-.animated:hover img{
-	opacity: 0.4;
-}
-.animated * {
-	transition: all 500ms ease-in-out;
-}
+/*.animated:hover img{*/
+/*	opacity: 0.4;*/
+/*}*/
+/*.animated * {*/
+/*	transition: all 500ms ease-in-out;*/
+/*}*/
 
-.animated:hover a .btn{
-	transform: scale(1.5);
-}
+/*.animated:hover a .btn{*/
+/*	transform: scale(1.5);*/
+/*}*/
 @media only screen and (min-width: 768px){
   .card-img-top{
        height:25vh;
