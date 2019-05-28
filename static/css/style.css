@@ -9,23 +9,31 @@
 
 .button{
   position: absolute;
-  font-size: 34px;
+  font-size: 18px;
   color: #fff;
-  top: 40%;
-  left: 44%;
+  top: 20%;
+  left: 30%;
   transform:scale(0);
 }
+.button a{
+	text-decoration:none;
+	border:1px solid #fff;
+	padding:5px 10px;
+	border-radius:10px;
+	color:#fff;
+	background:#16b1ff;
+}
 
-/*.animated:hover img{*/
-/*	opacity: 0.4;*/
-/*}*/
-/*.animated * {*/
-/*	transition: all 500ms ease-in-out;*/
-/*}*/
+.animated:hover img{
+	opacity: 0.4;
+}
+.animated * {
+	transition: all 500ms ease-in-out;
+}
 
-/*.animated:hover a .btn{*/
-/*	transform: scale(1.5);*/
-/*}*/
+.animated:hover .button{
+	transform: scale(1.5);
+}
 @media only screen and (min-width: 768px){
   .card-img-top{
        height:25vh;
