@@ -1,8 +1,16 @@
 import os
 import json
 from flask import Flask, request, render_template
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+
+
 app = Flask(__name__)
 
+app.config["MONGO_DBNAME"] = "Appetite_food"
+app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.mongodb.net/Appetite_food?retryWrites=true&w=majority"
+
+mongo = PyMongo(app)
 
 @app.route("/")
 def index():

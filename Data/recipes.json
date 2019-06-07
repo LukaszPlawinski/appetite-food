@@ -4,9 +4,7 @@
         "name": "Turnip Noodle Carbonara",
         "id": "turnip-carbonara",
         "description": "A healthier version of the classic dish that tastes just as good!",
-        "tag": [
-            "Bacon"
-        ],
+        "tag": [ "Bacon"],
         "ingredient": [
             {
                 "amount": "16",
