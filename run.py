@@ -13,34 +13,23 @@ app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.
 mongo = PyMongo(app)
 
 
-
-# @app.route("/")
-# def index():
-#      data = []
-#      with open("Data/recipes.json","r") as json_data:
-#         data =json.load(json_data)
-#      return render_template("index.html", recipes = data)
     
 @app.route("/")
 def index():
-    
      return render_template("index.html", recipes = mongo.db.recipes.find())
      
      
 @app.route("/login")
 def login():
     return render_template("login.html")
-@app.route('/<meal_name>')
-def about_meal(meal_name):
-    meal = {}
+
+
+@app.route('/<recipe_id>')
+def about_recipe(recipe_id):
+    return render_template('meal.html',
+    recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
     
-    with open("Data/recipes.json", "r") as json_data:
-        data = json.load(json_data)
-        for obj in data:
-            if obj["id"] == meal_name:
-                meal = obj
-    
-    return render_template("meal.html", meal=meal)
+
 @app.route("/recipes")
 def recipes():
     return render_template("recipes.html")
@@ -51,4 +40,4 @@ def contact():
 if __name__=='__main__':
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)

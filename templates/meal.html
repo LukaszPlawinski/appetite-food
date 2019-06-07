@@ -16,17 +16,21 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-<h2>{{meal.name}}</h2>
+    <div class="recipe_header">
+        <h2>{{recipe.name}}</h2>
+    </div>
+
 <hr>
 <div class="row">
     <div class=" col-md-5">
-        <img style="width:100%" src="{{ meal.image}}" alt="Image for {{meal.name}}">
+        <img style="width:100%" src="{{ recipe.image}}" alt="Image for {{recipe.name}}">
     </div>
    
     <div class=" col-md-5 offset-md-1">
         <h5 >Ingredients:</h5>
+        
         <ul>
-            {% for ingredient in meal.ingredient %}
+            {% for ingredient in recipe.ingredient %}
             <li>{{ingredient.name}}-{{ingredient.amount}} {{ingredient.unit}}</li>
             {% endfor %}
         </ul>
@@ -35,13 +39,12 @@
     <div class="col-md-10">
         <br>
         <h4>Preparation directions</h3>
-            <ol>
-                    {% for step in meal.step %}
+          <ol>
+             {% for step in recipe.step %}
                     <li>{{step.description}}</li>
-                    {% endfor %}
-                </ol>
+             {% endfor %}
+          </ol>
     </div>
     
-</div>
 </div>
 {% endblock %}

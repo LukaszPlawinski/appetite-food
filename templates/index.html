@@ -22,7 +22,7 @@
         <div class="card h-100">
           <div class="animated">
           <img class="card-img-top" src="{{recipe.image}}" alt="">
-           <p class="button"><a href="/{{ recipe.id }}">Read more</a></p>
+           <p class="button"><a href="{{url_for('about_recipe', recipe_id=recipe._id)}}">Read more</a></p>
           <div class="card-body">
             <h4 class="card-title">{{recipe.name}}</h4>
           </div>
