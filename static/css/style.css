@@ -37,6 +37,18 @@
 .animated:hover .button{
 	transform: scale(1.5);
 }
+
+.icons i{
+  padding-right: 20px;
+  font-size: 30px;
+}
+
+.edit{
+  color: green;
+}
+.delete{
+  color: red;
+}
 @media only screen and (min-width: 768px){
   .card-img-top{
        height:220px;
