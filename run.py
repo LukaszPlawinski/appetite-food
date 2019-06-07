@@ -12,13 +12,21 @@ app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.
 
 mongo = PyMongo(app)
 
+
+
+# @app.route("/")
+# def index():
+#      data = []
+#      with open("Data/recipes.json","r") as json_data:
+#         data =json.load(json_data)
+#      return render_template("index.html", recipes = data)
+    
 @app.route("/")
 def index():
-     data = []
-     with open("Data/recipes.json","r") as json_data:
-        data =json.load(json_data)
-     return render_template("index.html", recipes = data)
     
+     return render_template("index.html", recipes = mongo.db.recipes.find())
+     
+     
 @app.route("/login")
 def login():
     return render_template("login.html")
