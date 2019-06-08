@@ -1,23 +1,14 @@
 {% extends 'layout.html' %} {% block img %}
 <header class="masthead" style="background-image: url('../static/img/carrot.jpg')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h1>Cook with Us</h1>
-          <span class="subheading">Recipes created with passion and love</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
+{% endblock %} 
+{% block header %}
+  <h1>Cook with Us</h1>
+  <span class="subheading">Recipes created with passion and love</span>
 {% endblock %}
 {% block content %} 
  <div class="container">
    <div class="row text-center">
 {% for recipe in recipes %}
-
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <div class="animated">

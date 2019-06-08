@@ -38,6 +38,13 @@
 	transform: scale(1.5);
 }
 
+.delete i {
+      margin-top: 30px;
+}
+.add_ingredient i{
+  padding-right: 10px
+}
+
 .icons i{
   padding-right: 20px;
   font-size: 30px;
