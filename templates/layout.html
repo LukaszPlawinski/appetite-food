@@ -108,13 +108,15 @@
     <script src="{{url_for('static',filename='js/jqBootstrapValidation.js')}}"></script>
     <script>
         console.log("jquery")
-        
-        $("#add_ingredient").click(function(){
-            event.preventDefault();
+        $(document).on("click", "a.remove_ingredient" , function() {
+            $(this).closest(".row").remove();
+        });
+        $(document).on("click","#add_ingredient",function(){
             var newIngredient = $("#ingredient").clone()
             newIngredient.attr("id","")
             newIngredient.appendTo("#ingredients")
-    });
+        });
+        
     </script>
     
 </body>
