@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, request, render_template
+from flask import Flask, render_template,redirect,request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -16,12 +16,8 @@ mongo = PyMongo(app)
     
 @app.route("/")
 def index():
-     return render_template("index.html", recipes = mongo.db.recipes.find())
-     
-     
-@app.route("/login")
-def login():
-    return render_template("login.html")
+     return render_template("index.html",
+     recipes = mongo.db.recipes.find())
     
 @app.route('/add_recipe')
 def add_recipe():
@@ -31,7 +27,15 @@ def add_recipe():
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    that_recipe = {
+        "name": request.form.get('name'),
+        "image": request.form.get('image'),
+        "description": request.form.get('description'),
+        "ingredient":  request.form.to_dict(flat=False)["ingredient_name"],
+        "step":  request.form.to_dict(flat=False)["step_name"]
+    }
+    recipes.insert_one(that_recipe)
+        
     return redirect(url_for('index'))
     
     

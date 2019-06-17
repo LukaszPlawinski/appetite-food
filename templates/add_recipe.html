@@ -1,143 +1,127 @@
 {% extends "layout.html" %} 
     {% block img %}
-<header class="masthead" style="background-image: url('../static/img/bread.jpg')">
+    <header class="masthead" style="background-image: url('../static/img/bread.jpg')">
     {% endblock %}
     {% block header %}
-                    <h1>Add recipe</h1>
-                    <span class="subheading">Recipes created with passion and love</span>
+        <h1>Add recipe</h1>
+        <span class="subheading">Recipes created with passion and love</span>
     {% endblock %}
- {% block content %}
+    {% block content %}
 
 <div class="container">
     <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
-            <form name="sentMessage" id="contactForm" action='{{ url_for('insert_recipe')}}' method='POST' novalidate>
+            <form  action='{{ url_for('insert_recipe')}}' enctype="multipart/form-data" method='POST' novalidate>
+                
+                <!--Recipe name field-->
+                
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
                         <label>Recipe Name</label>
-                        <input type="text" class="form-control" placeholder="Recipe Name" id="name" required data-validation-required-message="Please enter name of the recipe.">
+                        <input type="text" class="form-control" name="name"  placeholder="Recipe Name" id="name" required data-validation-required-message="Please enter name of the recipe.">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
+                
+                <!--Recipe Description field-->
+                
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
                         <label>Description</label>
-                        <textarea rows="3" class="form-control" placeholder="Description" id="description" required data-validation-required-message="Please enter a description."></textarea>
+                        <textarea rows="3" class="form-control" name="description"  placeholder="Description" id="description" required data-validation-required-message="Please enter a description."></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
-                <div class="form-group floating-label-form-group controls">
-                    <label>Image</label>
-                    <input type="text" class="form-control" placeholder="Image url" id="image" required data-validation-required-message="Please url of the image.">
-                    <p class="help-block text-danger"></p>
-                </div>
-                </br>
-                <h3>Ingredients:</h3>
-                <div id="ingredients">
-                    <div class="row justify-content-between" id="ingredient">
-                        <div class="name col-md-6">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="name"  required data-validation-required-message="Please enter name of the ingredient.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="amount col-sm-4 col-md-2">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls">
-                                    <label>Amount</label>
-                                    <input type="text" class="form-control" placeholder="Amount"  required data-validation-required-message="Please enter ingredient amount.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="unit col-sm-4 col-md-2">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls">
-                                    <label>Unit</label>
-                                    <input type="text" class="form-control" placeholder="Unit"  required data-validation-required-message="Please enter ingredient unit.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="delete col-sm-1 col-md-1">
-                            <a href="javascript:void(0);" class="remove_ingredient"><i class="fas fa-trash-alt delete"></i></a>
-                        </div>
-                    </div>
-                    <div class="row justify-content-between" >
-                        <div class="name col-md-6">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="name" id="name" required data-validation-required-message="Please enter name of the ingredient.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="amount col-sm-4 col-md-2">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls">
-                                    <label>Amount</label>
-                                    <input type="text" class="form-control" placeholder="Amount" id="name" required data-validation-required-message="Please enter ingredient amount.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="unit col-sm-4 col-md-2">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls">
-                                    <label>Unit</label>
-                                    <input type="text" class="form-control" placeholder="Unit" id="name" required data-validation-required-message="Please enter ingredient unit.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="delete col-sm-1 col-md-1">
-                            <a href="javascript:void(0);" class="remove_ingredient"><i class="fas fa-trash-alt delete"></i></a>
-                        </div>
-                    </div>
-                </div>
-                </br>
-                <div class="row ">
-                    <div class="col-sm-4 icons ">
-                            <a href="javascript:void(0);" id="add_ingredient"><i class="fas fa-plus"></i>Add ingredient</a>
-                          
-                       </div>
-                </div>
-                </br>
-                <h3>Steps:</h3>
-                <div class="row ">
-                     <div class="control-group col-sm-11">
+                
+                <!--Recipe image field-->
+                
+                <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
-                        <label>Step</label>
-                        <textarea row="2" class="form-control" placeholder="Step"  required data-validation-required-message="Please enter step."></textarea>
+                        <label>Image</label>
+                        <input type="text" class="form-control" name="image" placeholder="Image url" id="image" required data-validation-required-message="Please url of the image.">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
-                 <div class="delete col-sm-1 col-md-1">
-                        <a href=""><i class="fas fa-trash-alt delete"></i></a>
+                </br>
+                
+                <!--Ingredients fields-->
+                
+                <div id="ingredients">
+                    <h3>Ingredients:</h3>
+                    <!--<div class="row justify-content-between" id="ingredient">-->
+                    <!--    <div class="name col-md-11">-->
+                    <!--        <div class="control-group">-->
+                    <!--            <div class="form-group floating-label-form-group controls">-->
+                    <!--                <label>Name</label>-->
+                    <!--                <input type="text" class="form-control"  placeholder="Ingredient Name / Amount"  required data-validation-required-message="Please enter name of the ingredient.">-->
+                    <!--                <p class="help-block text-danger"></p>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                        
+                    <!--    <div class="delete col-sm-1 col-md-1">-->
+                    <!--        <a href="javascript:void(0);" class="remove_ingredient"><i class="fas fa-trash-alt red"></i></a>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    
+                    <div class="row" >
+                        <div class="name col-11">
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredient Name / Amount" required data-validation-required-message="Please enter name of the ingredient.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="delete col-1">
+                            <a href="javascript:void(0);" class="remove_ingredient"><i class="fas fa-trash-alt red"></i></a>
+                        </div>
                     </div>
+                    
                 </div>
-                                </br>
+                </br>
                 <div class="row ">
                     <div class="col-sm-4 icons ">
-                            <a href="javascript:void(0);" id="add_step"><i class="fas fa-plus"></i>Add Step</a>
-                          
-                       </div>
+                            <a href="javascript:void(0);" id="add_ingredient" class="green"><i class="fas fa-plus"></i>Add ingredient</a>
+                    </div>
                 </div>
-
+               
+                </br>
+                
+                <!--Cooking steps fields-->
+                
+                <div id="steps">
+                    <h3>Steps:</h3>
+                    <div class="row ">
+                        <div class="control-group col-11">
+                            <div class="form-group floating-label-form-group controls">
+                                <label>Step</label>
+                                <textarea row="2" class="form-control" placeholder="Step" name='step_name'  required data-validation-required-message="Please enter step."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="delete col-1">
+                            <a href="javascript:void(0);" class="remove_step"><i class="fas fa-trash-alt delete red"></i></a>
+                        </div>
+                    </div>
+                    </br>
+                </div>
+                <div class="row ">
+                        <div class="col-sm-4 icons ">
+                                <a href="javascript:void(0);" id="add_step" class="green"><i class="fas fa-plus "></i>Add Step</a>
+                        </div>
+                </div>
                 <br>
-                <div id="success"></div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" id="sendMessageButton">Apply</button>
                 </div>
-        </div>
         </form>
+        </div>
     </div>
 </div>
-</div>
+
 
 
 {% endblock %}

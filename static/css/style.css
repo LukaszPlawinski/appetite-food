@@ -50,13 +50,13 @@
   font-size: 30px;
 }
 
-.edit{
-  color: green;
+.green{
+  color: #4bc400;
 }
-.delete{
-  color: red;
+.red{
+  color: #ff0000;
 }
-#ingredient{
+#ingredient, #step{
   display: none; 
 }
 @media only screen and (min-width: 768px){
