@@ -15,6 +15,7 @@ mongo = PyMongo(app)
 
     
 @app.route("/")
+@app.route('/index')
 def index():
      return render_template("index.html",
      recipes = mongo.db.recipes.find())
@@ -35,7 +36,6 @@ def insert_recipe():
         "step":  request.form.to_dict(flat=False)["step_name"]
     }
     recipes.insert_one(that_recipe)
-        
     return redirect(url_for('index'))
     
     
@@ -49,9 +49,21 @@ def edit_recipe(recipe_id):
     the_recipe = mongo.db. recipes.find_one({'_id': ObjectId(recipe_id)})
     return render_template('edit_recipe.html', recipe= the_recipe)
 
-@app.route("/recipes")
-def recipes():
-    return render_template("recipes.html")
+@app.route("/update_recipe/<recipe_id>", methods=["POST"])
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update( {'_id': ObjectId(recipe_id)},
+    {
+        "name": request.form.get('name'),
+        "image": request.form.get('image'),
+        "description": request.form.get('description'),
+        "ingredient":  request.form.to_dict(flat=False)["ingredient_name"],
+        "step":  request.form.to_dict(flat=False)["step_name"]
+    })
+    return redirect(url_for('index'))
+
+
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
