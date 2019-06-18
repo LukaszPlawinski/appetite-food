@@ -60,11 +60,6 @@
 .icons i,.header_icons i{
   padding-right: 20px;
   font-size: 30px;
-  transition: all 500ms ease-in-out;
-}
-
-.icons i:hover,.header_icons i:hover{
-  font-size: 35px;
 }
 
 .header_icons{

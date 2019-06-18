@@ -6,7 +6,7 @@
         });
         $(document).on("click","#add_ingredient",function(){
             var new_ingredient =` <div class="row" >
-                        <div class="name col-11">
+                        <div class="name col-10">
                             <div class="control-group">
                                 <div class="form-group floating-label-form-group controls">
                                     <label>Name</label>
@@ -24,7 +24,7 @@
         });
          $(document).on("click","#add_step",function(){
             var new_step = ` <div class="row ">
-                        <div class="control-group col-11">
+                        <div class="control-group col-10">
                             <div class="form-group floating-label-form-group controls">
                                 <label>Step</label>
                                 <textarea row="2" class="form-control" placeholder="Step" name="step_name"  required data-validation-required-message="Please enter step."></textarea>
