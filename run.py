@@ -32,6 +32,7 @@ def insert_recipe():
         "name": request.form.get('name'),
         "image": request.form.get('image'),
         "description": request.form.get('description'),
+        "author": request.form.get('author'),
         "ingredient":  request.form.to_dict(flat=False)["ingredient_name"],
         "step":  request.form.to_dict(flat=False)["step_name"]
     }
@@ -57,6 +58,7 @@ def update_recipe(recipe_id):
         "name": request.form.get('name'),
         "image": request.form.get('image'),
         "description": request.form.get('description'),
+        "author": request.form.get('author'),
         "ingredient":  request.form.to_dict(flat=False)["ingredient_name"],
         "step":  request.form.to_dict(flat=False)["step_name"]
     })
