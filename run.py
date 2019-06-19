@@ -69,6 +69,15 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('index'))
+    
+    
+@app.route("/search/<search_text>", methods=["GET","POST"])
+def search(search_text):
+    
+    mongo.db.recipes.create_index([("name",'text')])
+    query = ({ "$text": { "search":search_text}})
+    return  render_template("results.html",
+    recipes=mongo.db.recipes.find(query))
 
 @app.route("/contact")
 def contact():
