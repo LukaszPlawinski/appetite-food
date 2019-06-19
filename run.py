@@ -14,11 +14,16 @@ mongo = PyMongo(app)
 
 
     
-@app.route("/")
-@app.route('/index')
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/index", methods=['GET', 'POST'])
 def index():
-     return render_template("index.html",
-     recipes = mongo.db.recipes.find())
+    if request.method == "POST":
+        if request.form.get('action') == 'search':
+            searched_text =  request.form.get('search_input')
+            return redirect(url_for('search', 
+                    search_text=searched_text))
+    return render_template("index.html",
+    recipes = mongo.db.recipes.find())
     
 @app.route('/add_recipe')
 def add_recipe():
@@ -73,9 +78,8 @@ def delete_recipe(recipe_id):
     
 @app.route("/search/<search_text>", methods=["GET","POST"])
 def search(search_text):
-    
     mongo.db.recipes.create_index([("name",'text')])
-    query = ({ "$text": { "search":search_text}})
+    query = ({ "$text": { "$search":search_text}})
     return  render_template("results.html",
     recipes=mongo.db.recipes.find(query))
 
