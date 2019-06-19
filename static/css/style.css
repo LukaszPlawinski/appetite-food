@@ -83,6 +83,11 @@
 #ingredient, #step{
   display: none; 
 }
+
+.search_input input[type=text]:focus:not([readonly]) {
+border-bottom: 1px solid #4dd0e1;
+box-shadow: 0 1px 0 0 #4dd0e1;
+}
 @media only screen and (min-width: 768px){
   .card-img-top{
        height:220px;
