@@ -5,14 +5,15 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 
-app = Flask(__name__)
+# Connection with mongo db database
 
+app = Flask(__name__)
 app.config["MONGO_DBNAME"] = "Appetite_food"
 app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.mongodb.net/Appetite_food?retryWrites=true&w=majority"
-
 mongo = PyMongo(app)
 
 
+# Route for the main page. If Search button is clicked user is redirected to results.html
     
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
@@ -25,10 +26,14 @@ def index():
     return render_template("index.html",
     recipes = mongo.db.recipes.find())
     
+
+    
 @app.route('/add_recipe')
 def add_recipe():
    return render_template("add_recipe.html", 
    recipe =mongo.db.recipes.find())
+   
+#  This function takes all values from form about recipe and inserts them into mongo database
    
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
@@ -44,11 +49,14 @@ def insert_recipe():
     recipes.insert_one(that_recipe)
     return redirect(url_for('index'))
     
-    
+# Route wchich send us to meal.html page where are all details about choosen recipe
+
 @app.route('/<recipe_id>')
 def about_recipe(recipe_id):
     return render_template('meal.html',
     recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
+    
+# EDIT and UPDATE functions 
     
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
@@ -70,11 +78,15 @@ def update_recipe(recipe_id):
     return redirect(url_for('index'))
 
 
+# DELETE function
+
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('index'))
     
+    
+# SEARCH function takes searched phrase and rendering all recipes which contain this phrase in their name
     
 @app.route("/search/<search_text>", methods=["GET","POST"])
 def search(search_text):
