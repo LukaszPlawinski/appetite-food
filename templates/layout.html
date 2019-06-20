@@ -32,6 +32,9 @@
                         <a class="nav-link" href="{{ url_for('add_recipe') }}">Add recipe</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModal" >Login</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
                     </li>
                 </ul>
@@ -58,6 +61,47 @@
    
 
     {% block content %} {% endblock %}
+    
+    
+    <!--Modal-->
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title">Sign in</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>username</label>
+                        <input type="text" class="form-control" name="username" placeholder="username" id="username" required data-validation-required-message="Please enter your username">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                
+                <!--Author name field-->
+                
+                 <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>password</label>
+                        <input type="password" class="form-control" name="password"  placeholder="password" id="password" required data-validation-required-message="Please enter your password">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+      </div>
+      <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Login</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
      <!-- Footer -->
     <footer>
