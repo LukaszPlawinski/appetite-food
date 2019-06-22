@@ -1,16 +1,19 @@
 import os
 import json
-from flask import Flask, render_template,redirect,request, url_for
+from flask import Flask, render_template,redirect,request,session, url_for
 from flask_pymongo import PyMongo
+from flask_bcrypt import Bcrypt
 from bson.objectid import ObjectId
 
 
 # Connection with mongo db database
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
 app.config["MONGO_DBNAME"] = "Appetite_food"
 app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.mongodb.net/Appetite_food?retryWrites=true&w=majority"
 mongo = PyMongo(app)
+bcrypt = Bcrypt(app)
 
 
 # Route for the main page. If Search button is clicked user is redirected to results.html
@@ -18,6 +21,7 @@ mongo = PyMongo(app)
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
 def index():
+    
     if request.method == "POST":
         if request.form.get('action') == 'search':
             searched_text =  request.form.get('search_input')
@@ -27,7 +31,20 @@ def index():
     recipes = mongo.db.recipes.find())
     
 
-    
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name' : request.form.get('username')})
+
+        if existing_user is None:
+            pw_hash = bcrypt.generate_password_hash(request.form['pass'])
+            users.insert({'name' : request.form.get('username'), 'password' : pw_hash})
+            session['username'] = request.form.get('username')
+            return redirect(url_for('index'))
+        return 'That username already exists!'
+    return redirect(url_for('index'))
+
 @app.route('/add_recipe')
 def add_recipe():
    return render_template("add_recipe.html", 
@@ -94,6 +111,8 @@ def search(search_text):
     query = ({ "$text": { "$search":search_text}})
     return  render_template("results.html",
     recipes=mongo.db.recipes.find(query))
+    
+# Contact form
 
 @app.route("/contact")
 def contact():
