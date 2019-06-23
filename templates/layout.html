@@ -31,9 +31,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('add_recipe') }}">Add recipe</a>
                     </li>
+                    {% if user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}" data-target="#login_modal" >{{user}}</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="modal" data-target="#login_modal" >Login</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
                     </li>
@@ -80,29 +86,30 @@
           </div>
 
       </div>
-      
       <hr>
-      <div class="modal-body">
-        <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>username</label>
-                        <input type="text" class="form-control" name="username" placeholder="username" id="username" required data-validation-required-message="Please enter your username">
-                        <p class="help-block text-danger"></p>
+      <form method=POST action="">
+          <div class="modal-body">
+            <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>username</label>
+                            <input type="text" class="form-control" name="username" placeholder="username" id="username" required data-validation-required-message="Please enter your username">
+                            <p class="help-block text-danger"></p>
+                        </div>
                     </div>
-                </div>
-                
-                 <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>password</label>
-                        <input type="password" class="form-control" name="password"  placeholder="password" id="password" required data-validation-required-message="Please enter your password">
-                        <p class="help-block text-danger"></p>
+                    
+                     <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>password</label>
+                            <input type="password" class="form-control" name="password"  placeholder="password" id="password" required data-validation-required-message="Please enter your password">
+                            <p class="help-block text-danger"></p>
+                        </div>
                     </div>
-                </div>
-      </div>
-      <hr>
-      <div class="text-center">
-        <button type="button" class="btn btn-primary">Login</button>
-      </div>
+          </div>
+          <hr>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+      </form>
       <br>
       <div >
           <p class="text-center">Not a member? <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#register_modal" class="blue-text">Sign Up</a></p>
@@ -129,33 +136,33 @@
                 </button>
           </div>
       </div>
-      <div class="modal-body">
-        
-        <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>username</label>
-                        <input type="text" class="form-control" name="username" placeholder="username" id="username" required data-validation-required-message="Please enter your username">
-                        <p class="help-block text-danger"></p>
+      <form method=POST action="{{ url_for('register') }}">
+          <div class="modal-body">
+            <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>username</label>
+                            <input type="text" class="form-control" name="username" placeholder="username" id="username" required data-validation-required-message="Please enter your username">
+                            <p class="help-block text-danger"></p>
+                        </div>
                     </div>
-                </div>
-                
-                 <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>password</label>
-                        <input type="password" class="form-control" name="password"  placeholder="password" id="password" required data-validation-required-message="Please enter your password">
-                        <p class="help-block text-danger"></p>
+                    
+                     <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>password</label>
+                            <input type="password" class="form-control" name="pass"  placeholder="password" id="pass" required data-validation-required-message="Please enter your password">
+                            <p class="help-block text-danger"></p>
+                        </div>
                     </div>
-                </div>
-      </div>
-      <br>
-      <div class="text-center">
-        <button type="button" class="btn btn-primary">Register</button>
-      </div>
+          </div>
+          <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+      </form>
       <br>
     </div>
   </div>
 </div>
-
 
      <!-- Footer -->
     <footer>

@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template,redirect,request,session, url_for
+from flask import Flask, render_template,redirect,request,session,g, url_for,flash
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 from bson.objectid import ObjectId
@@ -26,10 +26,13 @@ def index():
         if request.form.get('action') == 'search':
             searched_text =  request.form.get('search_input')
             return redirect(url_for('search', 
-                    search_text=searched_text))
+                    search_text=searched_text),user = g.user)
     return render_template("index.html",
-    recipes = mongo.db.recipes.find())
+    recipes = mongo.db.recipes.find(),
+    user=g.user)
     
+# Register function
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -38,11 +41,28 @@ def register():
         existing_user = users.find_one({'name' : request.form.get('username')})
 
         if existing_user is None:
+            
+# Hashing password to don't keep it in plain text
+
             pw_hash = bcrypt.generate_password_hash(request.form['pass'])
             users.insert({'name' : request.form.get('username'), 'password' : pw_hash})
+            
+# Adding username to session array with active users
+
             session['username'] = request.form.get('username')
-            return redirect(url_for('index'))
-        return 'That username already exists!'
+        else:
+            return 'That username already exists!'
+    return redirect(url_for('index'))
+    
+@app.before_request
+def before_request():
+    g.user = None
+    if 'username' in session:
+        g.user = session['username']
+    
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
     return redirect(url_for('index'))
 
 @app.route('/add_recipe')
