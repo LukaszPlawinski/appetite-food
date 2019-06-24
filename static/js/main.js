@@ -37,4 +37,7 @@
                     </div>`
             $(new_step).appendTo("#steps");
         });
+        $(function() {
+            $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+        });
 })
