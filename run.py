@@ -2,7 +2,7 @@ import os
 import json
 from flask import Flask, render_template,redirect,request,session,g, url_for,flash
 from flask_pymongo import PyMongo
-from flask_bcrypt import Bcrypt
+import bcrypt
 from bson.objectid import ObjectId
 
 
@@ -13,7 +13,6 @@ app.secret_key = os.urandom(24)
 app.config["MONGO_DBNAME"] = "Appetite_food"
 app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.mongodb.net/Appetite_food?retryWrites=true&w=majority"
 mongo = PyMongo(app)
-bcrypt = Bcrypt(app)
 
 
 # Route for the main page. If Search button is clicked user is redirected to results.html
@@ -30,9 +29,24 @@ def index():
     return render_template("index.html",
     recipes = mongo.db.recipes.find(),
     user=g.user)
-    
-# Register function
 
+# Login function
+
+@app.route('/login', methods = ['POST'])
+def login():
+    users = mongo.db.users
+    login_user = users.find_one({'name' : request.form.get('username')})
+    
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+            session['username'] = request.form.get('username')
+            return redirect(url_for('index'))
+        return 'Invalid password'
+    return 'Invalid username'
+        
+    
+
+# Register function
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -44,7 +58,7 @@ def register():
             
 # Hashing password to don't keep it in plain text
 
-            pw_hash = bcrypt.generate_password_hash(request.form['pass'])
+            pw_hash = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name' : request.form.get('username'), 'password' : pw_hash})
             
 # Adding username to session array with active users
@@ -54,6 +68,7 @@ def register():
             return 'That username already exists!'
     return redirect(url_for('index'))
     
+
 @app.before_request
 def before_request():
     g.user = None
@@ -84,7 +99,7 @@ def insert_recipe():
         "step":  request.form.to_dict(flat=False)["step_name"]
     }
     recipes.insert_one(that_recipe)
-    return redirect(url_for('index'))
+    return redirect(url_for('index'), user=g.user)
     
 # Route wchich send us to meal.html page where are all details about choosen recipe
 
@@ -98,7 +113,7 @@ def about_recipe(recipe_id):
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db. recipes.find_one({'_id': ObjectId(recipe_id)})
-    return render_template('edit_recipe.html', recipe= the_recipe)
+    return render_template('edit_recipe.html', recipe= the_recipe,  user=g.user)
 
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
@@ -127,16 +142,16 @@ def delete_recipe(recipe_id):
     
 @app.route("/search/<search_text>", methods=["GET","POST"])
 def search(search_text):
-    mongo.db.recipes.create_index([("name",'text')])
+    mongo.db.recipes.create_index([("name","text")])
     query = ({ "$text": { "$search":search_text}})
     return  render_template("results.html",
-    recipes=mongo.db.recipes.find(query))
+    recipes=mongo.db.recipes.find(query),  user=g.user)
     
 # Contact form
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact.html",  user=g.user)
     
 if __name__=='__main__':
     app.run(host=os.environ.get("IP"),
