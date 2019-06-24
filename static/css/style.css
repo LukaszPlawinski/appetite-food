@@ -80,9 +80,6 @@
   margin: 0 5px;
   color: #888;
 }
-#ingredient, #step{
-  display: none; 
-}
 
 .modal-sign button{
   position: absolute;
