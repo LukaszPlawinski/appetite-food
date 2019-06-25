@@ -90,7 +90,8 @@ def logout():
 @app.route('/add_recipe')
 def add_recipe():
    return render_template("add_recipe.html", 
-   recipe =mongo.db.recipes.find())
+   recipe =mongo.db.recipes.find(),
+   user=g.user)
    
 #  This function takes all values from form about recipe and inserts them into mongo database
    
