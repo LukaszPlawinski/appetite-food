@@ -4,6 +4,43 @@
     <h1>Cook with Us</h1>
     <span class="subheading">Recipes created with passion and love</span> {% endblock %} {% block content %}
     <div class="container">
+        
+        <!--BAR with select and serch inputs-->
+        
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <form  method='POST' action='{{url_for("index")}}' >
+                    <div class="row justify-content-center">
+                        <div class="col-8 input-group ">
+                            <select class="custom-select"  name="category_name" onchange="this.form.submit()">
+                                <option value="" disabled selected>Choose Category</option>
+                                {% for cat in categories %}
+                                   
+                                        <option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-md-6">
+                <form  method='POST' action='{{url_for("index")}}'>
+                    <div class="row justify-content-end">
+                        <div class="md-form mb-3 col-8 col-md-9 search_input" >
+                          <input class="form-control " name="search_input" type="text" placeholder="Search" aria-label="Search"/>
+                        </div>
+                        <div class="col-4 col-md-3 flex-row-reverse">
+                             <input class="btn btn-primary" type="submit" name="action" value="search"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr>
+        
+        <!--SORTED RECIPES-->
+        
         <div class="row text-center">
             {% for recipe in recipes %}
             <div class="col-lg-3 col-md-6 mb-4">

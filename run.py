@@ -25,9 +25,16 @@ def index():
         if request.form.get('action') == 'search':
             searched_text =  request.form.get('search_input')
             return redirect(url_for('search', 
-                    search_text=searched_text),user = g.user)
+                    search_text=searched_text))
+        else:
+            choosen_category =  request.form.get('category_name')
+            return redirect(url_for('chose_category', 
+                    choosen_category=choosen_category))
+                    
+                    
     return render_template("index.html",
     recipes = mongo.db.recipes.find(),
+    categories= mongo.db.categories.find(),
     user=g.user)
 
 # Login function
@@ -99,14 +106,14 @@ def insert_recipe():
         "step":  request.form.to_dict(flat=False)["step_name"]
     }
     recipes.insert_one(that_recipe)
-    return redirect(url_for('index'), user=g.user)
+    return redirect(url_for('index'))
     
 # Route wchich send us to meal.html page where are all details about choosen recipe
 
 @app.route('/<recipe_id>')
 def about_recipe(recipe_id):
     return render_template('meal.html',
-    recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
+    recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}),  user=g.user)
     
 # EDIT and UPDATE functions 
     
@@ -145,13 +152,22 @@ def search(search_text):
     mongo.db.recipes.create_index([("name","text")])
     query = ({ "$text": { "$search":search_text}})
     return  render_template("results.html",
+    categories= mongo.db.categories.find(),
     recipes=mongo.db.recipes.find(query),  user=g.user)
+    
+# CHOSE CATEGORY
+@app.route("/chose/<choosen_category>", methods=["GET","POST"])
+def chose_category(choosen_category):
+    return  render_template("results.html",
+    categories= mongo.db.categories.find(),
+    recipes=mongo.db.recipes.find({"category": choosen_category}),  user=g.user)
     
 # Contact form
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html",  user=g.user)
+    return render_template("contact.html",
+    user=g.user)
     
 if __name__=='__main__':
     app.run(host=os.environ.get("IP"),
