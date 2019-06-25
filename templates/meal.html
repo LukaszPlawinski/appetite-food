@@ -8,21 +8,30 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-    <div class=" row justify-content-between recipe_header">
+    
+    {% if user == recipe.author %}
+    <div class="row justify-content-between recipe_header">
         <div class="recipe_name col-7">
             <h2>{{recipe.name}}</h2>
         </div>
-        
         <div class="header_icons col-5">
             <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"><i class="fas fa-edit green"></i></a>
             <a href="{{ url_for('delete_recipe',recipe_id=recipe._id)}}"><i class="fas fa-trash-alt red"></i></a>
         </div>
     </div>
+    {% else %}
+     <div class="row justify-content-between recipe_header">
+        <div class="recipe_name col-12">
+            <h2>{{recipe.name}}</h2>
+        </div>
+    </div>
+    {% endif %}
+    
+    
     <div class="row">
         <div class="col author">
             <p>by {{recipe.author}}</p>
         </div>
-        
     </div>
 
 <hr>
