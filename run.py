@@ -39,7 +39,7 @@ def index():
 
 # Login function
 
-@app.route('/login', methods = ['POST'])
+@app.route('/login', methods = ['GET','POST'])
 def login():
     users = mongo.db.users
     login_user = users.find_one({'name' : request.form.get('username')})
@@ -47,9 +47,15 @@ def login():
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form.get('username')
+            flash('You have successfully logged in')
             return redirect(url_for('index'))
-        return 'Invalid password'
-    return 'Invalid username'
+        else:
+            flash('Invalid password')
+            return redirect(url_for('index'))
+    else:
+        flash('Invalid username')
+        return redirect(url_for('index'))
+
         
     
 
