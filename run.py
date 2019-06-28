@@ -47,7 +47,7 @@ def login():
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form.get('username')
-            flash('You have successfully logged in')
+            flash('Welcome ')
             return redirect(url_for('index'))
         else:
             flash('Invalid password')
@@ -79,6 +79,7 @@ def register():
             session['username'] = request.form.get('username')
         else:
             return 'That username already exists!'
+    flash('You have been successfully registered ')
     return redirect(url_for('index'))
     
 
@@ -91,6 +92,7 @@ def before_request():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
+    flash('You you have logged out successfully')
     return redirect(url_for('index'))
 
 @app.route('/add_recipe')
