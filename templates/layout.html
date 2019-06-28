@@ -68,13 +68,18 @@
 
     {% with messages = get_flashed_messages() %} {% if messages %}
     <div class="modal fade" id="alert_modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <br>
                 <div class="modal-body">
                     <div class="flashes text-center">
                         {% for message in messages %}
-                        <h4>{{ message }}</h4>
+                        {% if user %}
+                            <h4>{{ message }}{{ user }}</h4>
+                        {% else %}
+                             <h4>{{ message }}</h4>
+                        {% endif %}
+                        
                         {% endfor %}
                     </div>
                 </div>
@@ -89,7 +94,7 @@
     <!--Login Modal-->
 
     <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <br>
                 <div class="row modal-sign text-center">
@@ -145,7 +150,7 @@
     <!--Register Modal-->
 
     <div class="modal fade" id="register_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <br>
                 <div class="row modal-sign text-center">
