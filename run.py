@@ -93,7 +93,7 @@ def before_request():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    flash('You you have logged out')
+    flash('You have been logged out')
     return redirect(url_for('index'))
 
 @app.route('/add_recipe')
