@@ -48,7 +48,7 @@
                  <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
                         <label>Author</label>
-                        <input type="text" class="form-control" name="author"  placeholder="Author" id="author" required data-validation-required-message="Please enter author name.">
+                        <input type="text" class="form-control" name="author" value="{{user}}"  id="author" readonly required data-validation-required-message="Please enter author name.">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
@@ -108,8 +108,8 @@
                         </div>
                 </div>
                 <br>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" >Add</button>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary" >Add Recipe</button>
                 </div>
         </form>
         </div>
