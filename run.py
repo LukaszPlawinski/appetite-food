@@ -50,10 +50,10 @@ def login():
             flash('Welcome ')
             return redirect(url_for('index'))
         else:
-            flash('Invalid password')
+            flash('Invalid password !')
             return redirect(url_for('index'))
     else:
-        flash('Invalid username')
+        flash('Invalid username !')
         return redirect(url_for('index'))
 
         
@@ -78,7 +78,8 @@ def register():
 
             session['username'] = request.form.get('username')
         else:
-            return 'That username already exists!'
+            flash('That username already exists!')
+            return redirect(url_for('index'))
     flash('You have been successfully registered ')
     return redirect(url_for('index'))
     
@@ -92,7 +93,7 @@ def before_request():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    flash('You you have logged out successfully')
+    flash('You you have logged out')
     return redirect(url_for('index'))
 
 @app.route('/add_recipe')
@@ -173,7 +174,7 @@ def chose_category(choosen_category):
     
 # Contact form
 
-@app.route("/contact")
+@app.route("/contact",methods=["GET", "POST"])
 def contact():
     return render_template("contact.html",
     user=g.user)

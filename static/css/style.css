@@ -46,7 +46,7 @@
 .animated:hover img{
 	opacity: 0.6;
 }
-.animated a:hover{
+.animated a:hover, a.blue-text{
   text-decoration: none;
 }
 
@@ -83,11 +83,12 @@
 
 .modal-sign button{
   position: absolute;
-  right: 15px;
+  right: 20px;
 }
-.modal i{
+.user_icon i, .pass_icon i{
     margin-top: 30px;
     font-size: 25px;
+    padding-left: 8px;
 }
 
 .search_input input[type=text]:focus:not([readonly]) {

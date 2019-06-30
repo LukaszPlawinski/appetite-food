@@ -43,7 +43,7 @@
      $('#alert_modal').modal('show');
      setTimeout(function() {
          $('#alert_modal').modal('hide');
-     }, 2000);
+     }, 3000);
 
 
  })
