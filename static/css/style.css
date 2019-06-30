@@ -46,8 +46,12 @@
 .animated:hover img{
 	opacity: 0.6;
 }
-.animated a:hover, a.blue-text{
+.animated a:hover, a.turquoise{
   text-decoration: none;
+}
+
+.turquoise{
+  
 }
 
 .delete i {
