@@ -51,7 +51,7 @@
 }
 
 .turquoise{
-  
+  color: #0085A1;
 }
 
 .delete i {
@@ -94,7 +94,9 @@
     font-size: 25px;
     padding-left: 8px;
 }
-
+#ingredients,#steps,#add_ingredient,#add_step{
+  margin-top:25px;
+}
 #category_form{
   margin-bottom: 20px;
 }
