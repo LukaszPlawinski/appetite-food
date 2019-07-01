@@ -4,6 +4,8 @@ from flask import Flask, render_template,redirect,request,session,g, url_for,fla
 from flask_pymongo import PyMongo
 import bcrypt
 from bson.objectid import ObjectId
+from flask_mail import Mail
+from flask_mail import Message
 
 
 # Connection with mongo db database
@@ -13,6 +15,18 @@ app.secret_key = os.urandom(24)
 app.config["MONGO_DBNAME"] = "Appetite_food"
 app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.mongodb.net/Appetite_food?retryWrites=true&w=majority"
 mongo = PyMongo(app)
+
+
+# Mail configuration
+
+app.config.update(
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=587,
+    MAIL_USE_TLS=True,
+    MAIL_USERNAME = "appetitefoodinfo@gmail.com",
+    MAIL_PASSWORD = "Jedzenie90"
+    )
+mail = Mail(app)
 
 
 # Route for the main page. If Search button is clicked user is redirected to results.html
@@ -176,6 +190,11 @@ def chose_category(choosen_category):
 
 @app.route("/contact",methods=["GET", "POST"])
 def contact():
+    email = request.form.get('email')
+    msg = Message("Hello",
+                  sender="appetitefoodinfo@gmail.com",
+                  recipients=["appetitefoodinfo@gmail.com"])
+    mail.send(msg)
     return render_template("contact.html",
     user=g.user)
     
