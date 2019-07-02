@@ -46,8 +46,11 @@
 .animated:hover img{
 	opacity: 0.6;
 }
-.animated a:hover, a.turquoise{
+.animated a:hover, a.turquoise, #cookie a{
   text-decoration: none;
+}
+#cookies a{
+  color: #007bff;;
 }
 
 .turquoise{
