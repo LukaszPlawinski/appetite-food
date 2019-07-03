@@ -25,7 +25,7 @@ app.config.update(
     MAIL_USE_TLS=True,
     MAIL_DEFAULT_SENDER="appetitefoodinfo@gmail.com",
     MAIL_USERNAME = "appetitefoodinfo@gmail.com",
-    MAIL_PASSWORD = "Jedzenie90"
+    MAIL_PASSWORD = "Food1234!"
     )
 mail = Mail(app)
 
@@ -190,21 +190,26 @@ def chose_category(choosen_category):
 
 @app.route("/contact",methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        name=request.form.get('name');
+        email=message=request.form.get('email');
+        phone=request.form.get('phone');
+        message=request.form.get('message');
+        msg = Message("Message",
+                      recipients=["appetitefoodinfo@gmail.com"])
+        msg.html = " <p>Mail from :<strong> " + name + "</strong></p><p>" + message + "</p><p>My email: "+ email + "</p><p>My phone: " + phone +"</p>"
+        mail.send(msg);
+        
+        
+        
+        flash("Thanks {}, we have received your message".format(
+            request.form["name"]
+        ))
     return render_template("contact.html",
     user=g.user)
     
     
-@app.route("/send",methods=["GET", "POST"])
-def send():
-    name=request.form.get('name');
-    email=message=request.form.get('email');
-    phone=request.form.get('phone');
-    message=request.form.get('message');
-    msg = Message("Message",
-                  recipients=["appetitefoodinfo@gmail.com"])
-    msg.html = " <p>Mail from :<strong> " + name + "</strong></p><p>" + message + "</p><p>My email: "+ email + "</p><p>My phone: " + phone +"</p>"
-    mail.send(msg);
-    return redirect(url_for('contact'))
+
  
 if __name__=='__main__':
     app.run(host=os.environ.get("IP"),
