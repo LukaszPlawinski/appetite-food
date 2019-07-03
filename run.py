@@ -199,10 +199,7 @@ def contact():
                       recipients=["appetitefoodinfo@gmail.com"])
         msg.html = " <p>Mail from :<strong> " + name + "</strong></p><p>" + message + "</p><p>My email: "+ email + "</p><p>My phone: " + phone +"</p>"
         mail.send(msg);
-        
-        
-        
-        flash("Thanks {}, we have received your message".format(
+        flash("Thank you for your message {}. We will respond as soon as possible.".format(
             request.form["name"]
         ))
     return render_template("contact.html",
