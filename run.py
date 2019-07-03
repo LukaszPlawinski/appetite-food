@@ -24,8 +24,8 @@ app.config.update(
     MAIL_PORT=587,
     MAIL_USE_TLS=True,
     MAIL_DEFAULT_SENDER="appetitefoodinfo@gmail.com",
-    MAIL_USERNAME = "appetitefoodinfo@gmail.com",
-    MAIL_PASSWORD = "Jedzenie90"
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME"),
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     )
 mail = Mail(app)
 
@@ -45,7 +45,6 @@ def index():
             choosen_category =  request.form.get('category_name')
             return redirect(url_for('chose_category', 
                     choosen_category=choosen_category))
-                    
                     
     return render_template("index.html",
     recipes = mongo.db.recipes.find(),
