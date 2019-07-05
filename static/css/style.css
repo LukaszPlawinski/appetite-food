@@ -100,7 +100,7 @@
 #ingredients,#steps,#add_ingredient,#add_step{
   margin-top:25px;
 }
-#category_form{
+.category_form{
   margin-bottom: 20px;
 }
 .search_input input[type=text]:focus:not([readonly]) {
