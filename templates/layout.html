@@ -64,33 +64,34 @@
         </div>
     </div>
     </header>
-    
+
     <!--Alert modal-->
 
-    {% with messages = get_flashed_messages() %} {% if messages %}
+    {% with alerts = get_flashed_messages(category_filter=["alert"]) %} {% if alerts %}
     <div class="modal fade" id="alert_modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <br>
+                <br> 
+                <div class="div">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="modal-body">
                     <div class="flashes text-center">
-                        {% for message in messages %}
-                        {% if user %}
-                            <h4>{{ message }}{{ user }}</h4>
-                            <p>Right now you can add, edit and delete your recipes.</p>
+                        {% for alert in alerts %} {% if user %}
+                        <h4>{{ alert }}{{ user }}</h4>
+                        <p>Right now you can add, edit and delete your recipes.</p>
                         {% else %}
-                             <h4>{{ message }}</h4>
-                        {% endif %}
-                        
-                        {% endfor %}
+                        <h4>{{ alert }}</h4>
+                        {% endif %} {% endfor %}
                     </div>
                 </div>
                 <br>
             </div>
         </div>
     </div>
-    {% endif %} {% endwith %}
-    {% block content %} {% endblock %}
+    {% endif %} {% endwith %} {% block content %} {% endblock %}
 
 
     <!--Login Modal-->
@@ -236,16 +237,16 @@
             </div>
         </div>
     </footer>
-    
-    <!-- START Bootstrap-Cookie-Alert -->
-<div class="alert text-center cookiealert" role="alert" id='cookie'>
-    <b>Do you like cookies?</b> &#x1F36A; We use cookies to ensure you get the best experience on our website. <a href="https://cookiesandyou.com/"  target="_blank" >Learn more</a>
 
-    <button type="button" class="btn btn-warning btn-sm acceptcookies" aria-label="Close">
+    <!-- START Bootstrap-Cookie-Alert -->
+    <div class="alert text-center cookiealert" role="alert" id='cookie'>
+        <b>Do you like cookies?</b> &#x1F36A; We use cookies to ensure you get the best experience on our website. <a href="https://cookiesandyou.com/" target="_blank">Learn more</a>
+
+        <button type="button" class="btn btn-warning btn-sm acceptcookies" aria-label="Close">
         I agree
     </button>
-</div>
-<!-- END Bootstrap-Cookie-Alert -->
+    </div>
+    <!-- END Bootstrap-Cookie-Alert -->
 
     <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
     <script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>

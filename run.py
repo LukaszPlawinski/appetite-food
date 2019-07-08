@@ -61,13 +61,13 @@ def login():
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form.get('username')
-            flash('Welcome ')
+            flash('Welcome ','alert')
             return redirect(url_for('index'))
         else:
-            flash('Invalid password !')
+            flash('Invalid password !','alert')
             return redirect(url_for('index'))
     else:
-        flash('Invalid username !')
+        flash('Invalid username !','alert')
         return redirect(url_for('index'))
 
         
@@ -92,7 +92,7 @@ def register():
 
             session['username'] = request.form.get('username')
         else:
-            flash('That username already exists!')
+            flash('That username already exists!','alert')
             return redirect(url_for('index'))
     flash('You have been successfully registered ')
     return redirect(url_for('index'))
@@ -107,7 +107,7 @@ def before_request():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    flash('You have been logged out')
+    flash('You have been logged out','alert')
     return redirect(url_for('index'))
 
 @app.route('/add_recipe')
@@ -175,16 +175,27 @@ def delete_recipe(recipe_id):
 def search(search_text):
     mongo.db.recipes.create_index([("name","text")])
     query = ({ "$text": { "$search":search_text}})
+    the_recipes = mongo.db.recipes.find(query)
+    the_number = the_recipes.count()
+    flash(' for word "{}" :'.format(search_text),'result')
+    
     return  render_template("results.html",
     categories= mongo.db.categories.find(),
-    recipes=mongo.db.recipes.find(query),  user=g.user)
+    recipes= the_recipes,
+    recipes_number = the_number,
+    user=g.user)
     
 # CHOSE CATEGORY
 @app.route("/chose/<choosen_category>", methods=["GET","POST"])
 def chose_category(choosen_category):
+    the_recipes = mongo.db.recipes.find({"category": choosen_category})
+    the_number = the_recipes.count()
+    flash("  in {} category:".format(choosen_category),'result')
+    
     return  render_template("results.html",
     categories= mongo.db.categories.find(),
-    recipes=mongo.db.recipes.find({"category": choosen_category}),  user=g.user)
+    recipes_number = the_number,
+    recipes= the_recipes,  user=g.user)
     
 # Contact form
 
