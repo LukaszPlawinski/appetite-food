@@ -13,7 +13,7 @@ from flask_mail import Message
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.config["MONGO_DBNAME"] = "Appetite_food"
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.mongodb.net/Appetite_food?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 
