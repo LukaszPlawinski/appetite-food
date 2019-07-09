@@ -43,6 +43,35 @@
   transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/*TOOLTIP*/
+
+.tooltipp {
+  position: relative;
+  display: inline-block;
+  border-bottom:none;
+}
+
+.tooltipp .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #eeeeeeb3;
+  color: #222;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px ;
+  font-size:14px;
+  position: absolute;
+  z-index: 1;
+  left:-12px;
+  top:35px;
+}
+
+.tooltipp:hover .tooltiptext {
+  visibility: visible;
+}
+
+/*END TOOLTIP*/
+
 .animated:hover img{
 	opacity: 0.6;
 }
@@ -103,10 +132,7 @@
 .category_form{
   margin-bottom: 20px;
 }
-.search_input input[type=text]:focus:not([readonly]) {
-border-bottom: 1px solid #4dd0e1;
-box-shadow: 0 1px 0 0 #4dd0e1;
-}
+
 @media only screen and (min-width: 768px){
   .card-img-top{
        height:220px;

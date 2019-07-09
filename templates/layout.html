@@ -39,8 +39,9 @@
                         <a class="nav-link" href="{{ url_for('logout') }}" data-target="#login_modal">Logout</a>
                     </li>
                     {% else %}
-                    <li class="nav-item">
+                    <li class="nav-item  tooltipp">
                         <a class="nav-link" href="" data-toggle="modal" data-target="#login_modal">Login</a>
+                        <span class="tooltiptext">Login to add and edit recipes</span>
                     </li>
                     {% endif %}
                     <li class="nav-item">
