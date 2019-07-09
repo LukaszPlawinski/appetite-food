@@ -39,8 +39,12 @@ def index():
     if request.method == "POST":
         if request.form.get('action') == 'search':
             searched_text =  request.form.get('search_input')
-            return redirect(url_for('search', 
-                    search_text=searched_text))
+            if searched_text == "":
+                flash("Please enter text to search","alert")
+                return redirect(url_for('index', user=g.user))
+            else:
+                return redirect(url_for('search', 
+                            search_text=searched_text))
         else:
             choosen_category =  request.form.get('category_name')
             return redirect(url_for('chose_category', 
