@@ -40,12 +40,13 @@
         </div>
         <hr>
         
-        <!--SORTED RECIPES-->
+
+        <!-- FLASH ALERT-->
         
-                {% with messages = get_flashed_messages(category_filter=["result"]) %} 
-                {% if messages %}
-                <div class="row">
-                    <div class="col-12 text-center">
+        {% with messages = get_flashed_messages(category_filter=["result"]) %} 
+        {% if messages %}
+            <div class="row">
+                <div class="col-12 text-center">
                     {% for message in messages %}
                         {% if recipes_number==1 %}
                            <p>There is {{ recipes_number }}  recipe {{ message }}</p> 
@@ -54,9 +55,11 @@
                         {% endif %}
                     {% endfor %}
                     </div>
-                </div>
-                {% endif %} 
-                {% endwith %}
+            </div>
+        {% endif %} 
+        {% endwith %}
+        
+        <!--SORTED RECIPES-->
             
         <div class="row text-center">
             {% for recipe in recipes %}
