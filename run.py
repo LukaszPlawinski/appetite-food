@@ -1,3 +1,30 @@
+'''
+    Table of Contents
+
+    1. Connection with mongo db database
+    2. Mail configuration
+    3. MAIN page
+    4. LOGIN function
+    5. REGISTER function
+    6. Check users in session before each request
+    7. LOGOUT function
+    8. ADD RECIPE page
+    9. INSERT RECIPE
+    10. MEAL page
+    11. EDIT recipe  function
+    12. UPDATE recipe function
+    13. DELETE recipe function
+    14. SEARCH function
+    15. CHOSE CATEGORY
+    16. CONTACT FORM
+
+'''
+
+
+
+
+
+
 import os
 import json
 from flask import Flask, render_template,redirect,request,session,g, url_for,flash
@@ -30,21 +57,24 @@ app.config.update(
 mail = Mail(app)
 
 
-# Route for the main page. If Search button is clicked user is redirected to results.html
+# MAIN page. 
     
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
 def index():
-    
     if request.method == "POST":
+        # when  search button is clicked user is redirected to results.html
         if request.form.get('action') == 'search':
             searched_text =  request.form.get('search_input')
+            # if input is empty error alert apears
             if searched_text == "":
                 flash("Please enter text to search","alert")
                 return redirect(url_for('index', user=g.user))
             else:
                 return redirect(url_for('search', 
                             search_text=searched_text))
+                            
+        # redirect user to result.html page after category is changed
         else:
             choosen_category =  request.form.get('category_name')
             return redirect(url_for('chose_category', 
@@ -55,13 +85,14 @@ def index():
     categories= mongo.db.categories.find(),
     user=g.user)
 
-# Login function
+
+# LOGIN function
 
 @app.route('/login', methods = ['GET','POST'])
 def login():
     users = mongo.db.users
     login_user = users.find_one({'name' : request.form.get('username')})
-    
+    # Password verification
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form.get('username')
@@ -74,26 +105,19 @@ def login():
         flash('Invalid username !','alert')
         return redirect(url_for('index'))
 
-        
-    
-
-# Register function
+  
+# REGISTER function
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'name' : request.form.get('username')})
-
+        
+        # Hashing password to don't keep it in plain text
         if existing_user is None:
-            
-# Hashing password to don't keep it in plain text
-
             pw_hash = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name' : request.form.get('username'), 'password' : pw_hash})
-            
-# Adding username to session array with active users
-
             session['username'] = request.form.get('username')
         else:
             flash('That username already exists!','alert')
@@ -102,29 +126,40 @@ def register():
     return redirect(url_for('index'))
     
 
+# Check users in session before each request
+
 @app.before_request
 def before_request():
     g.user = None
     if 'username' in session:
         g.user = session['username']
-    
+        
+
+# LOGOUT function
+
 @app.route('/logout')
 def logout():
     session.pop('username', None)
     flash('You have been logged out','alert')
     return redirect(url_for('index'))
 
+
+# ADD RECIPE page
+
 @app.route('/add_recipe')
 def add_recipe():
    return render_template("add_recipe.html", 
    recipe =mongo.db.recipes.find(),
    user=g.user)
-   
-#  This function takes all values from form about recipe and inserts them into mongo database
+ 
+ 
+#  INSERT RECIPE
    
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
+    
+    # It takes all values from form about recipe and inserts them into mongo database
     that_recipe = {
         "name": request.form.get('name'),
         "image": request.form.get('image'),
@@ -136,19 +171,23 @@ def insert_recipe():
     recipes.insert_one(that_recipe)
     return redirect(url_for('index'))
     
-# Route wchich send us to meal.html page where are all details about choosen recipe
+    
+# MEAL page
 
 @app.route('/<recipe_id>')
 def about_recipe(recipe_id):
     return render_template('meal.html',
     recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}),  user=g.user)
+ 
     
-# EDIT and UPDATE functions 
+# EDIT recipe  function
     
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db. recipes.find_one({'_id': ObjectId(recipe_id)})
     return render_template('edit_recipe.html', recipe= the_recipe,  user=g.user)
+
+# UPDATE recipe function
 
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
@@ -165,7 +204,7 @@ def update_recipe(recipe_id):
     return redirect(url_for('index'))
 
 
-# DELETE function
+# DELETE recipe function
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
@@ -173,10 +212,12 @@ def delete_recipe(recipe_id):
     return redirect(url_for('index'))
     
     
-# SEARCH function takes searched phrase and rendering all recipes which contain this phrase in their name
+# SEARCH function
     
 @app.route("/search/<search_text>", methods=["GET","POST"])
 def search(search_text):
+    
+    # takes searched phrase and rendering all recipes which contain this phrase in their name
     mongo.db.recipes.create_index([("name","text")])
     query = ({ "$text": { "$search":search_text}})
     the_recipes = mongo.db.recipes.find(query)
@@ -188,8 +229,10 @@ def search(search_text):
     recipes= the_recipes,
     recipes_number = the_number,
     user=g.user)
+ 
     
 # CHOSE CATEGORY
+
 @app.route("/chose/<choosen_category>", methods=["GET","POST"])
 def chose_category(choosen_category):
     the_recipes = mongo.db.recipes.find({"category": choosen_category})
@@ -201,7 +244,8 @@ def chose_category(choosen_category):
     recipes_number = the_number,
     recipes= the_recipes,  user=g.user)
     
-# Contact form
+    
+# CONTACT FORM
 
 @app.route("/contact",methods=["GET", "POST"])
 def contact():
@@ -210,6 +254,8 @@ def contact():
         email=message=request.form.get('email');
         phone=request.form.get('phone');
         message=request.form.get('message');
+        
+        # Message template which is sended to website owner email
         msg = Message("Message",
                       recipients=["appetitefoodinfo@gmail.com"])
         msg.html = " <p>Mail from :<strong> " + name + "</strong></p><p>" + message + "</p><p>My email: "+ email + "</p><p>My phone: " + phone +"</p>"
@@ -217,6 +263,7 @@ def contact():
         flash("Thank you for your message {}. We will respond as soon as possible.".format(
             request.form["name"]
         ))
+        
     return render_template("contact.html",
     user=g.user)
     
