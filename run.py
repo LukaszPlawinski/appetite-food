@@ -69,16 +69,17 @@ def index():
             # if input is empty error alert apears
             if searched_text == "":
                 flash("Please enter text to search","alert")
-                return redirect(url_for('index', user=g.user))
+                return redirect(url_for('index',
+                                        user=g.user))
             else:
                 return redirect(url_for('search', 
-                            search_text=searched_text))
+                                        search_text=searched_text))
                             
         # redirect user to result.html page after category is changed
         else:
             choosen_category =  request.form.get('category_name')
             return redirect(url_for('chose_category', 
-                    choosen_category=choosen_category))
+                                    choosen_category=choosen_category))
                     
     return render_template("index.html",
     recipes = mongo.db.recipes.find(),
@@ -148,9 +149,9 @@ def logout():
 
 @app.route('/add_recipe')
 def add_recipe():
-   return render_template("add_recipe.html", 
-   recipe =mongo.db.recipes.find(),
-   user=g.user)
+    return render_template("add_recipe.html", 
+                          recipe =mongo.db.recipes.find(),
+                          user=g.user)
  
  
 #  INSERT RECIPE
@@ -177,7 +178,8 @@ def insert_recipe():
 @app.route('/<recipe_id>')
 def about_recipe(recipe_id):
     return render_template('meal.html',
-    recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}),  user=g.user)
+                            recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}),
+                            user=g.user)
  
     
 # EDIT recipe  function
@@ -185,7 +187,9 @@ def about_recipe(recipe_id):
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db. recipes.find_one({'_id': ObjectId(recipe_id)})
-    return render_template('edit_recipe.html', recipe= the_recipe,  user=g.user)
+    return render_template('edit_recipe.html',
+                            recipe= the_recipe,
+                            user=g.user)
 
 # UPDATE recipe function
 
@@ -225,10 +229,10 @@ def search(search_text):
     flash(' for word "{}" :'.format(search_text),'result')
     
     return  render_template("results.html",
-    categories= mongo.db.categories.find(),
-    recipes= the_recipes,
-    recipes_number = the_number,
-    user=g.user)
+                            categories= mongo.db.categories.find(),
+                            recipes= the_recipes,
+                            recipes_number = the_number,
+                            user=g.user)
  
     
 # CHOSE CATEGORY
@@ -240,9 +244,9 @@ def chose_category(choosen_category):
     flash("  in {} category:".format(choosen_category),'result')
     
     return  render_template("results.html",
-    categories= mongo.db.categories.find(),
-    recipes_number = the_number,
-    recipes= the_recipes,  user=g.user)
+                            categories= mongo.db.categories.find(),
+                            recipes_number = the_number,
+                            recipes= the_recipes,  user=g.user)
     
     
 # CONTACT FORM
@@ -250,22 +254,22 @@ def chose_category(choosen_category):
 @app.route("/contact",methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
-        name=request.form.get('name');
-        email=message=request.form.get('email');
-        phone=request.form.get('phone');
-        message=request.form.get('message');
+        name=request.form.get('name')
+        email=message=request.form.get('email')
+        phone=request.form.get('phone')
+        message=request.form.get('message')
         
         # Message template which is sended to website owner email
         msg = Message("Message",
                       recipients=["appetitefoodinfo@gmail.com"])
         msg.html = " <p>Mail from :<strong> " + name + "</strong></p><p>" + message + "</p><p>My email: "+ email + "</p><p>My phone: " + phone +"</p>"
-        mail.send(msg);
+        mail.send(msg)
         flash("Thank you for your message {}. We will respond as soon as possible.".format(
             request.form["name"]
         ))
         
     return render_template("contact.html",
-    user=g.user)
+                            user=g.user)
     
     
 
