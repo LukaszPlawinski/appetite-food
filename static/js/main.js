@@ -1,9 +1,11 @@
  $(document).ready(function() {
-
-
+     
+     // Removes ingredient / cooking step
      $(document).on("click", "a.remove_ingredient, a.remove_step", function() {
          $(this).closest(".row").remove();
      });
+     
+     //Adds ingredient
      $(document).on("click", "#add_ingredient", function() {
          var new_ingredient = ` <div class="row" >
                         <div class="name col-10">
@@ -20,8 +22,10 @@
                             <a href="javascript:void(0);" class="remove_ingredient"><i class="fas fa-trash-alt red"></i></a>
                         </div>
                     </div>`;
-         $(new_ingredient).appendTo('#ingredients');
+         $(new_ingredient).appendTo("#ingredients");
      });
+     
+     // Adds cooking step
      $(document).on("click", "#add_step", function() {
          var new_step = ` <div class="row ">
                         <div class="control-group col-10">
@@ -37,13 +41,17 @@
                     </div>`
          $(new_step).appendTo("#steps");
      });
+     
+     //Contact form validation
      $(function() {
          $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
      });
-     $('#alert_modal').modal('show');
+     
+     // Modal is closed automatically after 4s
+     $("#alert_modal").modal('show');
      setTimeout(function() {
-         $('#alert_modal').modal('hide');
-     }, 3000);
+         $("#alert_modal").modal('hide');
+     }, 4000);
 
 
  })
