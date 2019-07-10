@@ -1,11 +1,72 @@
-.card-img-top {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
+
+/* COLORS */
+
+.green{
+  color: #4bc400;
 }
-.card{
-    border: none;
+.red{
+  color: #ff0000;
 }
+.turquoise{
+  color: #0085A1;
+}
+
+
+/*ICONS*/
+
+
+.delete i {
+      margin-top: 30px;
+}
+.add_ingredient i{
+  padding-right: 10px
+}
+
+.icons i,.header_icons i{
+  padding-right: 20px;
+  font-size: 30px;
+}
+.header_icons{
+   text-align: right;
+}
+.user_icon i, .pass_icon i{
+    margin-top: 30px;
+    font-size: 25px;
+    padding-left: 8px;
+}
+
+
+/*TOOLTIP*/
+
+
+.tooltipp {
+  position: relative;
+  display: inline-block;
+  border-bottom:none;
+}
+
+.tooltipp .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #eeeeeeb3;
+  color: #222;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px ;
+  font-size:14px;
+  position: absolute;
+  z-index: 1;
+  left:-12px;
+  top:35px;
+}
+
+.tooltipp:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+/* ANIMATED */
+
 
 .animated i {
   position: absolute;
@@ -44,74 +105,29 @@
   transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/*TOOLTIP*/
-
-.tooltipp {
-  position: relative;
-  display: inline-block;
-  border-bottom:none;
-}
-
-.tooltipp .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #eeeeeeb3;
-  color: #222;
-  text-align: center;
-  border-radius: 4px;
-  padding: 5px ;
-  font-size:14px;
-  position: absolute;
-  z-index: 1;
-  left:-12px;
-  top:35px;
-}
-
-.tooltipp:hover .tooltiptext {
-  visibility: visible;
-}
-
-/*END TOOLTIP*/
-
 .animated:hover img{
 	opacity: 0.6;
 }
 .animated a:hover, a.turquoise, #cookie a{
   text-decoration: none;
 }
+
+/*GENERAL*/
+
+.card-img-top {
+    width: 100%;
+    height: 380px;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+.card{
+    border: none;
+}
 #cookies a{
   color: #007bff;;
 }
-
-.turquoise{
-  color: #0085A1;
-}
-
-.delete i {
-      margin-top: 30px;
-}
-.add_ingredient i{
-  padding-right: 10px
-}
-
-.icons i,.header_icons i{
-  padding-right: 20px;
-  font-size: 30px;
-}
-
-.header_icons{
-   text-align: right;
-}
-
 .meal_image{
   margin-bottom: 10px;
-}
-
-.green{
-  color: #4bc400;
-}
-.red{
-  color: #ff0000;
 }
 .author p{
   margin: 0 5px;
@@ -122,11 +138,7 @@
   position: absolute;
   right: 20px;
 }
-.user_icon i, .pass_icon i{
-    margin-top: 30px;
-    font-size: 25px;
-    padding-left: 8px;
-}
+
 #ingredients,#steps,#add_ingredient,#add_step{
   margin-top:25px;
 }
