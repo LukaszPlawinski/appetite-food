@@ -16,7 +16,7 @@
   width: 40px;
   height: 40px;
   line-height: 50px;
-
+  visibility: hidden;
   -webkit-transform: translate(-50%, -50%) scale(0);
   -ms-transform: translate(-50%, -50%) scale(0);
   transform: translate(-50%, -50%) scale(0);
@@ -33,6 +33,7 @@
 
 .animated:hover i,
 .animated:focus i {
+  visibility: visible;
   -webkit-transform: translate(-50%, -50%) scale(2);
   -ms-transform: translate(-50%, -50%) scale(2);
   transform: translate(-50%, -50%) scale(2);
