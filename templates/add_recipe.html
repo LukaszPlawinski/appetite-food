@@ -2,120 +2,118 @@
     {% block img %}
     <header class="masthead" style="background-image: url('../static/img/bread.jpg')">
     {% endblock %}
+    
     {% block header %}
         <h1>Add recipe</h1>
     {% endblock %}
+    
     {% block content %}
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-10 col-md-10 mx-auto">
-            <form  action='{{ url_for('insert_recipe')}}'   method='POST' novalidate>
-                
-                <!--Recipe name field-->
-                
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Recipe Name</label>
-                        <input type="text" class="form-control" name="name"  placeholder="Recipe Name" id="name" required data-validation-required-message="Please enter name of the recipe.">
-                        <p class="help-block text-danger"></p>
-                    </div>
-                </div>
-                
-                <!--Recipe Description field-->
-                
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Description</label>
-                        <textarea rows="3" class="form-control" name="description"  placeholder="Description" id="description" required data-validation-required-message="Please enter a description."></textarea>
-                        <p class="help-block text-danger"></p>
-                    </div>
-                </div>
-                
-                <!--Recipe image field-->
-                
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Image</label>
-                        <input type="text" class="form-control" name="image" placeholder="Image url" id="image" required data-validation-required-message="Please url of the image.">
-                        <p class="help-block text-danger"></p>
-                    </div>
-                </div>
-                
-                <!--Author name field-->
-                
-                 <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <label>Author</label>
-                        <input type="text" class="form-control" name="author" value="{{user}}"  id="author" readonly required data-validation-required-message="Please enter author name.">
-                        <p class="help-block text-danger"></p>
-                    </div>
-                </div>
-                </br>
-                
-                <!--Ingredients fields-->
-                
-                <div id="ingredients">
-                    <h3>Ingredients:</h3>
-                    <div class="row" >
-                        <div class="name col-10">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredient Name / Amount" required data-validation-required-message="Please enter name of the ingredient.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 mx-auto">
+                    <form  action="{{ url_for('insert_recipe')}}"   method='POST' novalidate>
                         
-                        <div class="delete col-1">
-                            <a href="javascript:void(0);" class="remove_ingredient"><i class="fas fa-trash-alt red"></i></a>
-                        </div>
-                    </div>
-                    
-                </div>
-                </br>
-                <div class="row ">
-                    <div class="col-8 icons ">
-                            <a href="javascript:void(0);" id="add_ingredient" class="green"><i class="fas fa-plus"></i>Add ingredient</a>
-                    </div>
-                </div>
-               
-                </br>
-                
-                <!--Cooking steps fields-->
-                
-                <div id="steps">
-                    <h3>Steps:</h3>
-                    <div class="row ">
-                        <div class="control-group col-10">
+                        <!--Recipe name field-->
+                        
+                        <div class="control-group">
                             <div class="form-group floating-label-form-group controls">
-                                <label>Step</label>
-                                <textarea row="2" class="form-control" placeholder="Step" name='step_name'  required data-validation-required-message="Please enter step."></textarea>
+                                <label>Recipe Name</label>
+                                <input type="text" class="form-control" name="name"  placeholder="Recipe Name" id="name" required data-validation-required-message="Please enter name of the recipe.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <div class="delete col-1">
-                            <a href="javascript:void(0);" class="remove_step"><i class="fas fa-trash-alt delete red"></i></a>
+                        
+                        <!--Recipe Description field-->
+                        
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label>Description</label>
+                                <textarea rows="3" class="form-control" name="description"  placeholder="Description" id="description" required data-validation-required-message="Please enter a description."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
                         </div>
-                    </div>
-                    </br>
-                </div>
-                <br>
-                <div class="row ">
-                        <div class="col-8 icons ">
-                                <a href="javascript:void(0);" id="add_step" class="green"><i class="fas fa-plus "></i>Add Step</a>
+                        
+                        <!--Recipe image field-->
+                        
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label>Image</label>
+                                <input type="text" class="form-control" name="image" placeholder="Image url" id="image" required data-validation-required-message="Please url of the image.">
+                                <p class="help-block text-danger"></p>
+                            </div>
                         </div>
+                        
+                        <!--Author name field-->
+                        
+                         <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label>Author</label>
+                                <input type="text" class="form-control" name="author" value="{{user}}"  id="author" readonly required data-validation-required-message="Please enter author name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        </br>
+                        
+                        <!--Ingredients fields-->
+                        
+                        <div id="ingredients">
+                            <h3>Ingredients:</h3>
+                            <div class="row" >
+                                <div class="name col-10">
+                                    <div class="control-group">
+                                        <div class="form-group floating-label-form-group controls">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" name="ingredient_name" placeholder="Ingredient Name / Amount" required data-validation-required-message="Please enter name of the ingredient.">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="delete col-1">
+                                    <a href="javascript:void(0);" class="remove_ingredient"><i class="fas fa-trash-alt red"></i></a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        </br>
+                        <div class="row ">
+                            <div class="col-8 icons ">
+                                    <a href="javascript:void(0);" id="add_ingredient" class="green"><i class="fas fa-plus"></i>Add ingredient</a>
+                            </div>
+                        </div>
+                       
+                        </br>
+                        
+                        <!--Cooking steps fields-->
+                        
+                        <div id="steps">
+                            <h3>Steps:</h3>
+                            <div class="row ">
+                                <div class="control-group col-10">
+                                    <div class="form-group floating-label-form-group controls">
+                                        <label>Step</label>
+                                        <textarea row="2" class="form-control" placeholder="Step" name='step_name'  required data-validation-required-message="Please enter step."></textarea>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="delete col-1">
+                                    <a href="javascript:void(0);" class="remove_step"><i class="fas fa-trash-alt delete red"></i></a>
+                                </div>
+                            </div>
+                            </br>
+                        </div>
+                        <br>
+                        <div class="row ">
+                                <div class="col-8 icons ">
+                                        <a href="javascript:void(0);" id="add_step" class="green"><i class="fas fa-plus "></i>Add Step</a>
+                                </div>
+                        </div>
+                        <br>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary" >Add Recipe</button>
+                        </div>
+                </form>
                 </div>
-                <br>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary" >Add Recipe</button>
-                </div>
-        </form>
+            </div>
         </div>
-    </div>
-</div>
-
-
-
-{% endblock %}
+    {% endblock %}

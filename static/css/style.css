@@ -48,11 +48,11 @@
 .tooltipp .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: #eeeeeeb3;
+  background-color: #2f2f2f;
   color: #222;
   text-align: center;
   border-radius: 4px;
-  padding: 5px ;
+  padding: 6px ;
   font-size:14px;
   position: absolute;
   z-index: 1;

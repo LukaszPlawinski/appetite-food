@@ -1,8 +1,12 @@
-{% extends 'layout.html' %} {% block img %}
-<header class="masthead" style="background-image: url('../static/img/carrot.jpg')">
-    {% endblock %} {% block header %}
+{% extends 'layout.html' %} 
+{% block img %}
+    <header class="masthead" style="background-image: url('../static/img/carrot.jpg')">
+{% endblock %} 
+{% block header %}
     <h1>Cook with Us</h1>
-    <span class="subheading">Recipes created with passion and love</span> {% endblock %} {% block content %}
+    <span class="subheading">Recipes created with passion and love</span> 
+{% endblock %} 
+{% block content %}
     <div class="container">
         
         <!--BAR with select and serch inputs-->
@@ -43,23 +47,20 @@
         
         <div class="row text-center">
             {% for recipe in recipes %}
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="animated">
-                        <a href="{{url_for('about_recipe', recipe_id=recipe._id)}}">
-                            <img class="card-img-top" src="{{recipe.image}}" alt="">
-                            <i class="fas fa-info-circle"></i>
-                            <div class="card-body">
-                                <h4 class="card-title">{{recipe.name}}</h4>
-                            </div>
-                        </a>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="animated">
+                            <a href="{{url_for('about_recipe', recipe_id=recipe._id)}}">
+                                <img class="card-img-top" src="{{recipe.image}}" alt="">
+                                <i class="fas fa-info-circle"></i>
+                                <div class="card-body">
+                                    <h4 class="card-title">{{recipe.name}}</h4>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-
             {% endfor %}
         </div>
     </div>
-
-    {% endblock %}
+{% endblock %}
