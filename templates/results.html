@@ -1,85 +1,85 @@
-{% extends 'layout.html' %} {% block img %}
-<header class="masthead" style="background-image: url('../static/img/carrot.jpg')">
-    {% endblock %} {% block header %}
-    <h1>Cook with Us</h1>
-    <span class="subheading">Recipes created with passion and love</span> {% endblock %} {% block content %}
-    <div class="container">
-        
-        <!--BAR with select and serch inputs-->
-        
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <form  method='POST' action='{{url_for("index")}}' class="category_form">
-                    <div class="row">
-                        <div class="col-8 input-group ">
-                            <select class="custom-select"  name="category_name" onchange="this.form.submit()">
-                                <option value="" disabled selected>Choose Category</option>
-                                {% for cat in categories %}
-                                   
-                                        <option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-            <br>
-            <div class="col-12 col-md-6 justify-content-center">
-                <form  method='POST' action='{{url_for("index")}}'>
-                    <div class="row justify-content-end">
-                        <div class="md-form mb-3 col-8 col-md-9 search_input" >
-                          <input class="form-control " name="search_input" type="text" placeholder="Search" aria-label="Search"/>
-                        </div>
-                        <div class="col-4 col-md-3 flex-row-reverse">
-                             <input class="btn btn-primary" type="submit" name="action" value="search"/>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <hr>
-        
-
-        <!-- FLASH ALERT-->
-        
-        {% with messages = get_flashed_messages(category_filter=["result"]) %} 
-        {% if messages %}
-            <div class="row">
-                <div class="col-12 text-center">
-                    {% for message in messages %}
-                        {% if recipes_number==1 %}
-                           <p>There is {{ recipes_number }}  recipe {{ message }}</p> 
-                        {% else %}
-                            <p>There are {{ recipes_number }}  recipes {{ message }}</p>
-                        {% endif %}
-                    {% endfor %}
-                    </div>
-            </div>
-        {% endif %} 
-        {% endwith %}
-        
-        <!--SORTED RECIPES-->
+{% extends 'layout.html' %} 
+    {% block img %}
+        <header class="masthead" style="background-image: url('../static/img/carrot.jpg')">
+    {% endblock %} 
+    
+    {% block header %}
+        <h1>Cook with Us</h1>
+        <span class="subheading">Recipes created with passion and love</span> 
+    {% endblock %} 
+    
+    {% block content %}
+        <div class="container">
             
-        <div class="row text-center">
-            {% for recipe in recipes %}
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="animated">
-                        <a href="{{url_for('about_recipe', recipe_id=recipe._id)}}">
-                            <img class="card-img-top" src="{{recipe.image}}" alt="">
-                            <i class="fas fa-info-circle"></i>
-                            <div class="card-body">
-                                <h4 class="card-title">{{recipe.name}}</h4>
+            <!--BAR with select and serch inputs-->
+            
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <form  method='POST' action='{{url_for("index")}}' class="category_form">
+                        <div class="row">
+                            <div class="col-8 input-group ">
+                                <select class="custom-select"  name="category_name" onchange="this.form.submit()">
+                                    <option value="" disabled selected>Choose Category</option>
+                                    {% for cat in categories %}
+                                            <option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <div class="col-12 col-md-6 justify-content-center">
+                    <form  method='POST' action='{{url_for("index")}}'>
+                        <div class="row justify-content-end">
+                            <div class="md-form mb-3 col-8 col-md-9 search_input" >
+                              <input class="form-control " name="search_input" type="text" placeholder="Search" aria-label="Search"/>
+                            </div>
+                            <div class="col-4 col-md-3 flex-row-reverse">
+                                 <input class="btn btn-primary" type="submit" name="action" value="search"/>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-
-            {% endfor %}
+            <hr>
+    
+            <!-- FLASH ALERT-->
+            
+            {% with messages = get_flashed_messages(category_filter=["result"]) %} 
+                {% if messages %}
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            {% for message in messages %}
+                                {% if recipes_number==1 %}
+                                   <p>There is {{ recipes_number }}  recipe {{ message }}</p> 
+                                {% else %}
+                                    <p>There are {{ recipes_number }}  recipes {{ message }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %} 
+            {% endwith %}
+            
+            <!--Filtered recipes-->
+                
+            <div class="row text-center">
+                {% for recipe in recipes %}
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="animated">
+                                <a href="{{url_for('about_recipe', recipe_id=recipe._id)}}">
+                                    <img class="card-img-top" src="{{recipe.image}}" alt="">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{recipe.name}}</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-
     {% endblock %}
