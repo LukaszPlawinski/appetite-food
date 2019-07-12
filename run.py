@@ -92,12 +92,13 @@ def index():
 @app.route('/login', methods = ['GET','POST'])
 def login():
     users = mongo.db.users
-    login_user = users.find_one({'name' : request.form.get('username')})
+    the_user = request.form.get('username')
+    login_user = users.find_one({'name' : the_user })
     # Password verification
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
             session['username'] = request.form.get('username')
-            flash('Welcome ','alert')
+            flash('Welcome {}'.format(the_user),'alert')
             return redirect(url_for('index'))
         else:
             flash('Invalid password !','alert')

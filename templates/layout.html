@@ -76,24 +76,11 @@
                 <div class="modal fade" id="alert_modal" tabindex="-1" role="dialog">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <br> 
-                              <div class="row modal-sign">
-                                <div>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-            
-                            </div>
+                            <br>
                             <div class="modal-body">
                                 <div class="flashes text-center">
                                     {% for alert in alerts %} 
-                                        {% if user %}
-                                            <h4>{{ alert }}{{ user }}</h4>
-                                            <p>Right now you can add, edit and delete your recipes.</p>
-                                        {% else %}
-                                            <h4>{{ alert }}</h4>
-                                        {% endif %} 
+                                        <h4>{{ alert }}</h4> 
                                     {% endfor %}
                                 </div>
                             </div>
