@@ -8,20 +8,21 @@
 
 ##UX
 
-This website is created for users who loves cooking and healthy food. User can find here recipes with ingredients and the way of preparation.
-Searching and category  inputs make it easier. After logging in he can add, edit and delete recipe through user friendly interface.
+This website is created for users who loves cooking and healthy food. User can find here a lot of recipes with images and the way of preparation.
+Searching and category  inputs make it much easier. After logging in he can add, edit and delete recipe through user friendly interface.
 Project design and data base structure are in main folder.
 
 ### User stories:
 -As a person who loves cooking i would like to find fresh and healthy recipes.
  I should be able to add my own recipes too.
  
-###Acceptance Criteria:
+### Acceptance Criteria:
 
 * Recipe should contain:
     * name
     * picture
     * author
+    * description
     * ingredients
     * way of preparation
 * Possibility to find/filter reciepes:
@@ -37,17 +38,19 @@ Project design and data base structure are in main folder.
 
 
 ## Features
-###All pages
+### All pages
     On all pages there is a navbar where are links to: 
         1.Home
-        2.Login/Logout 
+        2.Login/Logout option
+            - When user clicks it, modal window appears. There he has option to login or register. 
+              Password is encrypted.
         3.Contact
         4.Add recipe - just for logged users
     In a footer there are social icons  leading to:
         1.Instagram
         2.Github
         3.Linkedin
-###Main page
+### Home page
     1.All recipes are displayed (image and name of the recipe)
     2.User can chose food category:
         * Starters
@@ -55,10 +58,26 @@ Project design and data base structure are in main folder.
         * Desserts
         * Drinks & Smoothies
     3. User can search recipe by phrase using searching input
-###Meal page
+### Meal page
     1.Recipe name
     2.Recipe author
-    3. Icons to edit and deleterecipe (Just if you are logged in and it is your recipe)
+    3. Icons to edit and delete recipe (Just if you are logged in and it is your recipe)
+    4. Ingredienta list
+    5. Description
+    6. Preparation steps
+### Add recipe
+    Page contain form where user can add all necessary informations about recipe.
+### Edit page 
+    User can edit all informations about recipe
+### Contact page
+    In case that user would like to contact website owner he can fill up form which contains:
+        * Name
+        * Tel number
+        * Email
+        * Message
+    All information are automatically sent to owner email.
+    
+    
 
 
 ## Technologies Used
@@ -67,17 +86,17 @@ Project design and data base structure are in main folder.
 2. CSS3 - Styling for page
 3. Javascript - makes website interactive, helps in building readable charts
 4. JQUERY - form verification, rendering
-4. Bootstrap-  mobile responsive layout, elements such as modals, cookie alert
-4. PYTHON - logic, routes
-5. FLASK - login, searching
-6. Pymongo - CRUD operations
-7. Flask-email - email automation
-8. Bcrypt - password hashing
-6. MongoDB-  database management
-7. MongoAtlas- automated cloud MongoDB service where database is stored
-7. [Font Awsome](https://fontawesome.com/) - edit, delete and cosial icons
-10. [Autoprefixer](https://autoprefixer.github.io/)- plugin which add vendor prefixes for different browsers
-11. Balsamic Mockups 3 - to create mockup
+5. Bootstrap-  mobile responsive layout, elements such as modals, cookie alert
+6. PYTHON - logic, routes
+7. FLASK - login, searching
+8. Pymongo - CRUD operations
+9. Flask-email - email automation
+10. Bcrypt - password hashing
+11. MongoDB-  database management
+12. MongoAtlas- automated cloud MongoDB service where database is stored
+13. [Font Awsome](https://fontawesome.com/) - edit, delete and cosial icons
+14. [Autoprefixer](https://autoprefixer.github.io/)- plugin which add vendor prefixes for different browsers
+15. Balsamic Mockups 3 - to create mockup
 
 
 ## Testing
@@ -86,32 +105,29 @@ Project design and data base structure are in main folder.
 * Javascript file was tested by [JS Validator](https://codebeautify.org/jsvalidate)
     and [jshint](https://jshint.com/)
 * Python file was tested by [Python validator](https://pythonbuddy.com/)
-
-
 * Website is responsive at all screen resolutions. 
-* Website tested in 'MultiBrowser' - cross-browser testing program. Project worked in all browsers below:
+* Website was tested in 'MultiBrowser' - cross-browser testing program. Project worked in all browsers below:
     * Chrome (Versions 72.0.3626.119)
     * Firefox (Version 65)
     * Opera (Version 58)
     * MS Edge (Version 42)
     * Safari (Version 11)
-* Website works on mobiles such as:
-    * 
-    * 
-    * 
-    * 
-
-
 
 
 ## Deployment
 
-During creation of the website I was using Visual Studio Code and git bash command line which helped me to commit and push all files to [github repository](https://github.com/LukaszPlawinski/Ireland-Population-Dashboard)
+*I was using cloud 9 IDE and git bash command line which helped me to commit ale changes on "Deployment" branch.
+* Flask and all necessary extension installed
+* All frameworks/extensions which have to be installed in environment are in requirements.txt file.
+* After everything worked I merged it with "Master" branch.
+* Code was pushed to github repository and later on connected with heroku pipeline.
+* In heroku environment i saved variables such us: "MONGO_URI", "MAIL_USER", "MAIL_PASSWORD"
 
-Website is deployed to github pages:  [Ireland Population Dashboard](https://lukaszplawinski.github.io/Ireland-Population-Dashboard/)
+### [Github repository](#)
+### [Live website](#)
+
 
 ## Credits
-
-Data used in this Website was sourced from:
-* [Data.gov.ie](https://data.gov.ie/)
-* Background picture downloaded from: [link](https://handluggageonly.co.uk/wp-content/uploads/2018/02/Best-Hikes-In-Ireland-You-Have-To-Walk.jpg)
+* Background pictures are from: [Pexels](https://data.gov.ie/)
+* Recipes come from [SkinnyMS](https://skinnyms.com/)
+* [Cookie alert](https://github.com/Wruczek/Bootstrap-Cookie-Alert)
