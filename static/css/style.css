@@ -4,6 +4,9 @@
 .green{
   color: #4bc400;
 }
+.green:hover{
+  color: #368d00;
+}
 .red{
   color: #ff0000;
 }
@@ -104,7 +107,7 @@
 .animated:hover img{
 	opacity: 0.6;
 }
-.animated a:hover, a.turquoise, #cookie a{
+.animated a:hover, a.turquoise, #cookie a, .icons a{
   text-decoration: none;
 }
 
