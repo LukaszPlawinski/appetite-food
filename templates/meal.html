@@ -56,6 +56,11 @@
         
         <div class="col-md-12">
             <br>
+            <h4>Description</h3>
+              <p>{{ recipe.description }}</p>
+        </div>
+        <div class="col-md-12">
+            <br>
             <h4>Preparation directions</h3>
               <ol>
                  {% for step in recipe.step %}
