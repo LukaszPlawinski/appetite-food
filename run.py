@@ -267,7 +267,7 @@ def contact():
         mail.send(msg)
         flash("Thank you for your message {}. We will respond as soon as possible.".format(
             request.form["name"]
-        ))
+        ),"alert")
         
     return render_template("contact.html",
                             user=g.user)
