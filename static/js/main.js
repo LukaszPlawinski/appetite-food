@@ -51,7 +51,7 @@
      $("#alert_modal").modal('show');
      setTimeout(function() {
          $("#alert_modal").modal('hide');
-     }, 4000);
+     }, 3500);
 
 
  })
