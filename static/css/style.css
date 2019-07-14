@@ -4,7 +4,7 @@
 .green{
   color: #4bc400;
 }
-.green:hover{
+.green:hover, .green:focus{
   color: #368d00;
 }
 .red{

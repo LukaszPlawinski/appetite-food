@@ -124,7 +124,7 @@ def register():
         else:
             flash('That username already exists!','alert')
             return redirect(url_for('index'))
-    flash('You have been successfully registered ')
+    flash('You have been successfully registered ', 'alert')
     return redirect(url_for('index'))
     
 
@@ -214,6 +214,7 @@ def update_recipe(recipe_id):
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    flash("Recipe has been deleted","alert")
     return redirect(url_for('index'))
     
     
