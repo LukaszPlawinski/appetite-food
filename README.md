@@ -1,12 +1,9 @@
 # Appetite Food
 
-![alt text](#)
+![alt text](https://github.com/LukaszPlawinski/appetite-food/blob/master/static/img/thumnail.jpg)
 
 
-
-
-
-##UX
+## UX
 
 This website is created for users who loves cooking and healthy food. User can find here a lot of recipes with images and the way of preparation.
 Searching and category  inputs make it much easier. After logging in he can add, edit and delete recipe through user friendly interface.
@@ -100,34 +97,41 @@ Project design and data base structure are in main folder.
 
 
 ## Testing
-* Html file was tested by [HTML VALIDATOR](https://validator.w3.org/)
-* Css file was tested by [CSS Validator](https://jigsaw.w3.org/css-validator/)
-* Javascript file was tested by [JS Validator](https://codebeautify.org/jsvalidate)
+* Html files were tested by [HTML VALIDATOR](https://validator.w3.org/)
+* Css files were tested by [CSS Validator](https://jigsaw.w3.org/css-validator/)
+* Javascript files were tested by [JS Validator](https://codebeautify.org/jsvalidate)
     and [jshint](https://jshint.com/)
 * Python file was tested by [Python validator](https://pythonbuddy.com/)
 * Website is responsive at all screen resolutions. 
-* Website was tested in 'MultiBrowser' - cross-browser testing program. Project worked in all browsers below:
-    * Chrome (Versions 72.0.3626.119)
-    * Firefox (Version 65)
-    * Opera (Version 58)
+* Website works on mobiles such as:
+    * Iphone 6/7/8
+    * Iphone 6/7/8 plus
+    * Samsung galaxy s5
+    * Pixel 2
+* Website was tested in 'MultiBrowser' - cross-browser testing program. App works in all browsers below:
+    * Chrome (Versions 75)
+    * Firefox (Version 68)
+    * Opera (Version 62)
     * MS Edge (Version 42)
     * Safari (Version 11)
 
 
 ## Deployment
 
-*I was using cloud 9 IDE and git bash command line which helped me to commit ale changes on "Deployment" branch.
-* Flask and all necessary extension installed
+* I was using cloud 9 IDE and git bash command line which helped me to commit ale changes on "Deployment" branch.
+* I installed Flask and all necessary extensions
 * All frameworks/extensions which have to be installed in environment are in requirements.txt file.
-* After everything worked I merged it with "Master" branch.
+* Main folder contain Procfile which declaring what commands are run by application’s dynos on the Heroku platform.
+* After everything worked I merged "deployment" branch with "Master" branch.
 * Code was pushed to github repository and later on connected with heroku pipeline.
 * In heroku environment i saved variables such us: "MONGO_URI", "MAIL_USER", "MAIL_PASSWORD"
+* Right know fully deployed website is visible on heroku server.
 
-### [Github repository](#)
-### [Live website](#)
+### [Live website ](https://appetite-food.herokuapp.com/)
+### [Github repository](https://github.com/LukaszPlawinski/appetite-food)
 
 
 ## Credits
 * Background pictures are from: [Pexels](https://data.gov.ie/)
-* Recipes come from [SkinnyMS](https://skinnyms.com/)
+* Recipes and recipe images come from [SkinnyMS](https://skinnyms.com/)
 * [Cookie alert](https://github.com/Wruczek/Bootstrap-Cookie-Alert)

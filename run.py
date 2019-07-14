@@ -40,7 +40,7 @@ from flask_mail import Message
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.config["MONGO_DBNAME"] = "Appetite_food"
-app.config["MONGO_URI"] = "mongodb+srv://root:r00tpassword@myfirstcluster-ggpfv.mongodb.net/Appetite_food?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
 
 
@@ -51,7 +51,7 @@ app.config.update(
     MAIL_PORT=587,
     MAIL_USE_TLS=True,
     MAIL_DEFAULT_SENDER="appetitefoodinfo@gmail.com",
-    MAIL_USERNAME =os.environ.get("MAIL_USERNAME"),
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME"),
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     )
 mail = Mail(app)
