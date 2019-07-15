@@ -104,15 +104,15 @@ Project design and data base structure are in main folder.
 * Python file was tested by [Python validator](https://pythonbuddy.com/)
 * All inputs, links and buttons have been tested
 * Tested features:
- * Register user , user exist error
- * Login user, Wrong Login, Wrong Password
- * Logout 
- * Add recipe
- * Edit recipe
- * Delete recipe
- * Search by phrase
- * Search by category
- * Contact form
+    * Register user , user exist error
+    * Login user, Wrong Login, Wrong Password
+    * Logout 
+    * Add recipe
+    * Edit recipe
+    * Delete recipe
+    * Search by phrase
+    * Search by category
+    * Contact form
 * Website is responsive at all screen resolutions. 
 * Website works on mobiles such as:
     * Iphone 6/7/8
