@@ -102,6 +102,17 @@ Project design and data base structure are in main folder.
 * Javascript files were tested by [JS Validator](https://codebeautify.org/jsvalidate)
     and [jshint](https://jshint.com/)
 * Python file was tested by [Python validator](https://pythonbuddy.com/)
+* All inputs, links and buttons have been tested
+* Tested features:
+ * Register user , user exist error
+ * Login user, Wrong Login, Wrong Password
+ * Logout 
+ * Add recipe
+ * Edit recipe
+ * Delete recipe
+ * Search by phrase
+ * Search by category
+ * Contact form
 * Website is responsive at all screen resolutions. 
 * Website works on mobiles such as:
     * Iphone 6/7/8
