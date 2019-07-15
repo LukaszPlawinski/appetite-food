@@ -171,6 +171,7 @@ def insert_recipe():
         "step":  request.form.to_dict(flat=False)["step_name"]
     }
     recipes.insert_one(that_recipe)
+    flash("Your recipe has been added","alert")
     return redirect(url_for('index'))
     
     
@@ -275,7 +276,6 @@ def contact():
     
     
 
- 
 if __name__=='__main__':
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
